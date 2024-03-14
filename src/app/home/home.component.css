@@ -1,0 +1,8 @@
+h1:hover{
+    color:green;
+}
+
+img:hover{
+    border-style: solid;
+    border-color: green;
+}
