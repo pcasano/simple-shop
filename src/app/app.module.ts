@@ -7,6 +7,7 @@ import { ShoesPageComponent } from './shoes-page/shoes-page.component';
 import { ShirtsPageComponent } from './shirts-page/shirts-page.component';
 import { TrousersPageComponent } from './trousers-page/trousers-page.component';
 import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CartComponent } from './cart/cart.component';
     ShoesPageComponent,
     ShirtsPageComponent,
     TrousersPageComponent,
-    CartComponent
+    CartComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
