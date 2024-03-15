@@ -1,1 +1,62 @@
-<p>shoes-page works!</p>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col d-flex flex-column align-items-center">
+            <div class="card" style="width: 18rem;">
+                <img src="../assets/shoes/shoe_1.jpg" class="card-img-top">
+            </div>
+            <br>
+            <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                <div></div>
+                <i class="bi bi-dash-circle h3" (click)="decreaseShoeModel1()"></i>
+                <div>{{shoeModelCounter_1}}</div>
+                <i class="bi bi-plus-circle h3" (click)="increaseShoeModel1()"></i>
+                <div></div>
+            </div>
+        </div>
+        <div class="col d-flex flex-column align-items-center">
+            <div class="card" style="width: 18rem;">
+                <img src="../assets/shoes/shoe_2.jpg" class="card-img-top">
+            </div>
+            <br>
+            <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                <div></div>
+                <i class="bi bi-dash-circle h3" (click)="decreaseShoeModel2()"></i>
+                <div>{{shoeModelCounter_2}}</div>
+                <i class="bi bi-plus-circle h3" (click)="increaseShoeModel2()"></i>
+                <div></div>
+            </div>
+        </div>
+        <div class="col d-flex flex-column align-items-center">
+            <div class="card" style="width: 18rem;">
+                <img src="../assets/shoes/shoe_3.jpg" class="card-img-top">
+            </div>
+            <br>
+            <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                <div></div>
+                <i class="bi bi-dash-circle h3" (click)="decreaseShoeModel3()"></i>
+                <div>{{shoeModelCounter_3}}</div>
+                <i class="bi bi-plus-circle h3" (click)="increaseShoeModel3()"></i>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col d-flex justify-content-start">
+            <button type="button" class="btn btn-primary" (click)="onGoBack()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go back</button>
+            <p>&nbsp;&nbsp;</p>
+            <button type="button" class="btn btn-success" (click)="onAddToCart()"><i class="bi bi-cart"></i>&nbsp;&nbsp;Add to cart</button>
+        </div>
+        <div class="col d-flex justify-content-end">
+            <button type="button" class="btn btn-danger" (click)="onEmptyCart()"><i class="bi bi-cart-x"></i>&nbsp;&nbsp;Empty cart</button>
+        </div>
+    </div>
+    <br>
+</div>

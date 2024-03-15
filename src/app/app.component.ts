@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ItemService } from './item.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ export class AppComponent {
   title = 'simple-shop';
 
   constructor(
-    private router: Router) {}
+    private router: Router,
+    public itemService: ItemService) {}
 
     clickOnCart() {
       this.router.navigateByUrl("cart");
