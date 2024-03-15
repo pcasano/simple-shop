@@ -79,18 +79,38 @@ export class ShoesPageComponent {
       price: 70,
       size: this.shoeSize_3
     }
-    this.itemService.shoes.push(shoe_1, shoe_2, shoe_3);
-    this.itemService.shoes.filter(shoe => shoe.number>0);
-    this.itemService.totalItems.push(shoe_1, shoe_2, shoe_3);
-    this.itemService.totalItems.filter(shoe => shoe.number>0);
+
+    if(shoe_1.number > 0) {
+      this.itemService.shoes.push(shoe_1);
+      this.itemService.totalCartItems.push(shoe_1);
+    } 
+    if (shoe_2.number > 0) {
+      this.itemService.shoes.push(shoe_2);
+      this.itemService.totalCartItems.push(shoe_2);
+    }
+    if (shoe_3.number > 0) {
+      this.itemService.shoes.push(shoe_3);
+      this.itemService.totalCartItems.push(shoe_3);
+    }
+
+
+
+
+    let shoesSInCart_1 = this.itemService.totalCartItems.filter(show => shoe_1.model=="first_type" && shoe_1.size=="S");
 
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
+
+    this.itemService.totalCartItems.forEach(x => console.log(console.log("shoes: " + x.model + " - " + x.size)));
+
+    
+
+    console.log("S Shoes_1: " + shoesSInCart_1.length);
   }
 
   onEmptyCart() {
-    this.itemService.totalItems = [];
+    this.itemService.totalCartItems = [];
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;

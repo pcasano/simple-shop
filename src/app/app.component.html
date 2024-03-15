@@ -8,7 +8,7 @@
     <div class="d-flex flex-wrap gap-3">
       <i class="bi bi-list" (click)="clickOnInventory()"></i>
       <div></div>
-      <div *ngIf="itemService.totalItems.length>0; else elseBlock">
+      <div *ngIf="itemService.totalCartItems.length>0; else elseBlock">
         <i class="bi bi-cart-check" (click)="clickOnCart()"></i>
       </div>
       <ng-template #elseBlock><i class="bi bi-cart" (click)="clickOnCart()"></i></ng-template>

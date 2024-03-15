@@ -6,7 +6,7 @@ export class ItemService {
     shirts: Item[] = [];
     trousers: Item[] = [];
 
-    totalItems: Item[] = [];
+    totalCartItems: Item[] = [];
 
 
     addShoe(shoe: Item) {
