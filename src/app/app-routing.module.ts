@@ -5,6 +5,7 @@ import { ShirtsPageComponent } from './shirts-page/shirts-page.component';
 import { TrousersPageComponent } from './trousers-page/trousers-page.component';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 const routes: Routes = [
     { path: 'shoes', component: ShoesPageComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'trousers', component: TrousersPageComponent },
     { path: 'home', component: HomeComponent },
     { path: '', component: HomeComponent },
+    { path: 'inventory', component: InventoryComponent },
     { path: 'cart', component: CartComponent }
   ];
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'simple-shop';
+
+  constructor(
+    private router: Router) {}
+
+    clickOnCart() {
+      this.router.navigateByUrl("cart");
+    }
+
+    clickOnInventory() {
+      this.router.navigateByUrl("inventory");
+      }
+
 }
