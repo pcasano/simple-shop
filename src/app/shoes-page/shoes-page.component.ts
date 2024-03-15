@@ -93,20 +93,33 @@ export class ShoesPageComponent {
       this.itemService.totalCartItems.push(shoe_3);
     }
 
+    this.itemService.shoeInCart1S = this.getTotalShoeGivenRelativeShoeAndSize(shoe_1, "S");
+    this.itemService.shoeInCart1M = this.getTotalShoeGivenRelativeShoeAndSize(shoe_1, "M");
+    this.itemService.shoeInCart1L = this.getTotalShoeGivenRelativeShoeAndSize(shoe_1, "L");
 
+    this.itemService.shoeInCart2S = this.getTotalShoeGivenRelativeShoeAndSize(shoe_2, "S");
+    this.itemService.shoeInCart2M = this.getTotalShoeGivenRelativeShoeAndSize(shoe_2, "M");
+    this.itemService.shoeInCart2L = this.getTotalShoeGivenRelativeShoeAndSize(shoe_2, "L");
 
-
-    let shoesSInCart_1 = this.itemService.totalCartItems.filter(show => shoe_1.model=="first_type" && shoe_1.size=="S");
+    this.itemService.shoeInCart3S = this.getTotalShoeGivenRelativeShoeAndSize(shoe_3, "S");
+    this.itemService.shoeInCart3M = this.getTotalShoeGivenRelativeShoeAndSize(shoe_3, "M");
+    this.itemService.shoeInCart3L = this.getTotalShoeGivenRelativeShoeAndSize(shoe_3, "L");
 
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
+  }
 
-    this.itemService.totalCartItems.forEach(x => console.log(console.log("shoes: " + x.model + " - " + x.size)));
-
-    
-
-    console.log("S Shoes_1: " + shoesSInCart_1.length);
+  private getTotalShoeGivenRelativeShoeAndSize(relativeShoe: Item, size: string): Item {
+    let shoes = this.itemService.totalCartItems.filter(shoe => shoe.model==relativeShoe.model && shoe.size==size).map(shoe => shoe.number);
+    let number =  shoes.reduce((acc, num) => acc + num, 0);
+    return {
+      type: "shoe",
+      model: relativeShoe.model,
+      number: number,
+      price: relativeShoe.price,
+      size: size
+    }
   }
 
   onEmptyCart() {

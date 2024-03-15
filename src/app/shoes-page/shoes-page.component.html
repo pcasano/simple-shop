@@ -19,8 +19,8 @@
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
                 <div></div>
-                <select #shoes1 class="form-select" aria-label="Default select example" (select)="onSelectShowSize_1(shoes1.value)">
-                    <option default>S</option>
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="shoeSize_1">
+                    <option value="" disabled selected>Select an size</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
@@ -43,8 +43,8 @@
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
                 <div></div>
-                <select #shoes2 class="form-select" aria-label="Default select example" (change)="onSelectShowSize_2(shoes2.value)">
-                    <option selected>S</option>
+                <select #shoes2 class="form-select" aria-label="Default select example" [(ngModel)]="shoeSize_2">
+                    <option value="" disabled selected>Select an size</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
@@ -67,8 +67,8 @@
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
                 <div></div>
-                <select #shoes3 class="form-select" aria-label="Default select example" (change)="onSelectShowSize_3(shoes3.value)">
-                    <option selected>S</option>
+                <select #shoes3 class="form-select" aria-label="Default select example" [(ngModel)]="shoeSize_3">
+                    <option value="" disabled selected>Select an size</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
                     <option value="L">L</option>
