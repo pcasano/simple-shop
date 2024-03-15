@@ -1,1 +1,28 @@
-<p>inventory works!</p>
+<br>
+<br>
+<div class="container col-12">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Type</th>
+        <th scope="col">Model</th>
+        <th scope="col">Number</th>
+        <th scope="col">Size</th>
+        <th scope="col">Prize</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of itemService.totalItems; index as i;">
+        <th scope="row">{{i}}</th>
+        <td>{{item.type}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.number}}</td>
+        <td>{{item.size}}</td>
+        <td>{{item.price}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
