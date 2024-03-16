@@ -53,7 +53,7 @@ export class ShoesPageComponent {
     }    
   }
 
-  onGoBack() {
+  onGoHome() {
     this.router.navigateByUrl("home");
   }
 
