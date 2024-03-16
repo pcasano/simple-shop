@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemService } from '../item.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory',
@@ -8,6 +9,12 @@ import { ItemService } from '../item.service';
 })
 export class InventoryComponent {
 
-  constructor(public itemService: ItemService) {}
+  constructor(
+    public itemService: ItemService,
+    private router: Router) {}
+
+  onGoHome() {
+    this.router.navigateByUrl("home");
+  }
 
 }

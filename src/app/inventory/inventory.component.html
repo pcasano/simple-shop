@@ -10,19 +10,33 @@
         <th scope="col">Number</th>
         <th scope="col">Size</th>
         <th scope="col">Prize</th>
+        <th scope="col">Total prize</th>
+        <th scope="col">Order Id</th>
 
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of itemService.totalCartItems; index as i;">
+      <tr *ngFor="let item of itemService.sentOrders; index as i;">
         <th scope="row">{{i}}</th>
         <td>{{item.type}}</td>
         <td>{{item.model}}</td>
         <td>{{item.number}}</td>
         <td>{{item.size}}</td>
         <td>{{item.price}}</td>
+        <td>{{item.totalPrice}}</td>
+        <td>{{item.orderId}}</td>
       </tr>
 
     </tbody>
   </table>
+
+
+  <div class="row">
+    <div class="col d-flex justify-content-start">
+        <button type="button" class="btn btn-primary" (click)="onGoHome()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go Home</button>
+        <p>&nbsp;&nbsp;</p>
+    </div>
+</div>
+<br>
+
 </div>

@@ -108,6 +108,9 @@ export class ShoesPageComponent {
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
+
+    console.log("En shoe page:");
+    console.log(this.itemService.shoeInCart1S);
   }
 
   private getTotalShoeGivenRelativeShoeAndSize(relativeShoe: Item, size: string): Item {

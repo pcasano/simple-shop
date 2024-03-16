@@ -1,3 +1,4 @@
+import { InventoryItem } from "./inventoryItem";
 import { Item } from "./item";
 
 export class ItemService {
@@ -19,6 +20,10 @@ export class ItemService {
     shoeInCart3S: Item;
     shoeInCart3M: Item;
     shoeInCart3L: Item;
+
+    sentOrders: InventoryItem[] = [];
+
+    orderId: number = 0;
 
 
     addShoe(shoe: Item) {
