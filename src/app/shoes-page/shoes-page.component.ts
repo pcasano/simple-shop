@@ -127,6 +127,16 @@ export class ShoesPageComponent {
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
+
+    this.itemService.shoeInCart1S.number = 0;
+    this.itemService.shoeInCart2S.number = 0;
+    this.itemService.shoeInCart3S.number = 0;
+    this.itemService.shoeInCart1M.number = 0;
+    this.itemService.shoeInCart2M.number = 0;
+    this.itemService.shoeInCart3M.number = 0;
+    this.itemService.shoeInCart1L.number = 0;
+    this.itemService.shoeInCart2L.number = 0;
+    this.itemService.shoeInCart3L.number = 0;
     }
 
   onSelectShowSize_1(value: string) {
