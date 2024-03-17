@@ -25,6 +25,7 @@ export class CartComponent {
     if(this.itemService.totalCartItems.length > 0) {
       this.itemService.orderId++;
     }
+
     ordersToSend.push(
       this.getItem(this.itemService.shoeInCart1S),
       this.getItem(this.itemService.shoeInCart1M),
@@ -35,9 +36,25 @@ export class CartComponent {
       this.getItem(this.itemService.shoeInCart3S),
       this.getItem(this.itemService.shoeInCart3M),
       this.getItem(this.itemService.shoeInCart3L),
+      this.getItem(this.itemService.shirtInCart1S),
+      this.getItem(this.itemService.shirtInCart1M),
+      this.getItem(this.itemService.shirtInCart1L),
+      this.getItem(this.itemService.shirtInCart2S),
+      this.getItem(this.itemService.shirtInCart2M),
+      this.getItem(this.itemService.shirtInCart2L),
+      this.getItem(this.itemService.shirtInCart3S),
+      this.getItem(this.itemService.shirtInCart3M),
+      this.getItem(this.itemService.shirtInCart3L),
     );
 
+    console.log("shirt:");
+    console.log(this.itemService.shirtInCart1S);  
+    console.log("shoe:");  
+    console.log(this.itemService.shoeInCart1S);
+
     ordersToSend.filter(item => item.number > 0).forEach(item => this.itemService.sentOrders.push(item));
+
+    
     // completewith shirts and trousers
     
     this.onEmptyCart();
@@ -74,6 +91,16 @@ export class CartComponent {
     this.itemService.shoeInCart1L.number = 0;
     this.itemService.shoeInCart2L.number = 0;
     this.itemService.shoeInCart3L.number = 0;
+
+    this.itemService.shirtInCart1S.number = 0;
+    this.itemService.shirtInCart2S.number = 0;
+    this.itemService.shirtInCart3S.number = 0;
+    this.itemService.shirtInCart1M.number = 0;
+    this.itemService.shirtInCart2M.number = 0;
+    this.itemService.shirtInCart3M.number = 0;
+    this.itemService.shirtInCart1L.number = 0;
+    this.itemService.shirtInCart2L.number = 0;
+    this.itemService.shirtInCart3L.number = 0;
 
     // completewith shirts and trousers
   }

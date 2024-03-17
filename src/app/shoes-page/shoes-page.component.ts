@@ -114,7 +114,7 @@ export class ShoesPageComponent {
   }
 
   private getTotalShoeGivenRelativeShoeAndSize(relativeShoe: Item, size: string): Item {
-    let shoes = this.itemService.totalCartItems.filter(shoe => shoe.model==relativeShoe.model && shoe.size==size).map(shoe => shoe.number);
+    let shoes = this.itemService.totalCartItems.filter(shoe => shoe.type=="shoe" && shoe.model==relativeShoe.model && shoe.size==size).map(shoe => shoe.number);
     let number =  shoes.reduce((acc, num) => acc + num, 0);
     return {
       type: "shoe",
