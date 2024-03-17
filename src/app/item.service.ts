@@ -21,6 +21,19 @@ export class ItemService {
     shoeInCart3M: Item;
     shoeInCart3L: Item;
 
+
+    shirtInCart1S: Item;
+    shirtInCart1M: Item;
+    shirtInCart1L: Item;
+
+    shirtInCart2S: Item;
+    shirtInCart2M: Item;
+    shirtInCart2L: Item;
+
+    shirtInCart3S: Item;
+    shirtInCart3M: Item;
+    shirtInCart3L: Item;
+
     sentOrders: InventoryItem[] = [];
 
     orderId: number = 0;
