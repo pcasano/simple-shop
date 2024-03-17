@@ -17,8 +17,6 @@ export class CartComponent {
     private router: Router
     ) {}
 
-
-
   onSendOrder() {
     let ordersToSend: InventoryItem[]= [];
 
@@ -36,6 +34,7 @@ export class CartComponent {
       this.getItem(this.itemService.shoeInCart3S),
       this.getItem(this.itemService.shoeInCart3M),
       this.getItem(this.itemService.shoeInCart3L),
+
       this.getItem(this.itemService.shirtInCart1S),
       this.getItem(this.itemService.shirtInCart1M),
       this.getItem(this.itemService.shirtInCart1L),
@@ -45,17 +44,20 @@ export class CartComponent {
       this.getItem(this.itemService.shirtInCart3S),
       this.getItem(this.itemService.shirtInCart3M),
       this.getItem(this.itemService.shirtInCart3L),
+
+      this.getItem(this.itemService.trouserInCart1S),
+      this.getItem(this.itemService.trouserInCart1M),
+      this.getItem(this.itemService.trouserInCart1L),
+      this.getItem(this.itemService.trouserInCart2S),
+      this.getItem(this.itemService.trouserInCart2M),
+      this.getItem(this.itemService.trouserInCart2L),
+      this.getItem(this.itemService.trouserInCart3S),
+      this.getItem(this.itemService.trouserInCart3M),
+      this.getItem(this.itemService.trouserInCart3L),
     );
 
-    console.log("shirt:");
-    console.log(this.itemService.shirtInCart1S);  
-    console.log("shoe:");  
-    console.log(this.itemService.shoeInCart1S);
-
     ordersToSend.filter(item => item.number > 0).forEach(item => this.itemService.sentOrders.push(item));
-
-    
-    // completewith shirts and trousers
+    this.itemService.inventoryTotalPrice =  this.itemService.sentOrders.map(order => order.totalPrice).reduce((acc, num) => acc + num, 0);
     
     this.onEmptyCart();
     this.router.navigateByUrl("inventory");
@@ -102,7 +104,15 @@ export class CartComponent {
     this.itemService.shirtInCart2L.number = 0;
     this.itemService.shirtInCart3L.number = 0;
 
-    // completewith shirts and trousers
+    this.itemService.trouserInCart1S.number = 0;
+    this.itemService.trouserInCart2S.number = 0;
+    this.itemService.trouserInCart3S.number = 0;
+    this.itemService.trouserInCart1M.number = 0;
+    this.itemService.trouserInCart2M.number = 0;
+    this.itemService.trouserInCart3M.number = 0;
+    this.itemService.trouserInCart1L.number = 0;
+    this.itemService.trouserInCart2L.number = 0;
+    this.itemService.trouserInCart3L.number = 0;
   }
 
 }

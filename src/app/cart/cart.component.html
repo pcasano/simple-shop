@@ -203,10 +203,110 @@
   </div>
 
 
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart1S.number>0">
+    <img src="../assets/trousers/trousers_1.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart1S.number}}</div>
+      <div>Size: {{itemService.trouserInCart1S.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart1S.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart1S.number * itemService.trouserInCart1S.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart1M.number>0">
+    <img src="../assets/trousers/trousers_1.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart1M.number}}</div>
+      <div>Size: {{itemService.trouserInCart1M.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart1M.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart1M.number * itemService.trouserInCart1M.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart1L.number>0">
+    <img src="../assets/trousers/trousers_1.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart1L.number}}</div>
+      <div>Size: {{itemService.trouserInCart1L.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart1L.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart1L.number * itemService.trouserInCart1L.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart2S.number>0">
+    <img src="../assets/trousers/trousers_2.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart2S.number}}</div>
+      <div>Size: {{itemService.trouserInCart2S.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart2S.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart2S.number * itemService.trouserInCart2S.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart2M.number>0">
+    <img src="../assets/trousers/trousers_2.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart2M.number}}</div>
+      <div>Size: {{itemService.trouserInCart2M.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart2M.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart2M.number * itemService.trouserInCart2M.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart2L.number>0">
+    <img src="../assets/trousers/trousers_2.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart2L.number}}</div>
+      <div>Size: {{itemService.trouserInCart2L.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart2L.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart2L.number * itemService.trouserInCart2L.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart3S.number>0">
+    <img src="../assets/trousers/trousers_3.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart3S.number}}</div>
+      <div>Size: {{itemService.trouserInCart3S.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart3S.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart3S.number * itemService.trouserInCart3S.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart3M.number>0">
+    <img src="../assets/trousers/trousers_3.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart3M.number}}</div>
+      <div>Size: {{itemService.trouserInCart3M.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart3M.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart3M.number * itemService.trouserInCart3M.price}} EUR</div>
+    </div>
+  </div>
+
+  <div class="card" style="width: 18rem;" *ngIf="itemService.trouserInCart3L.number>0">
+    <img src="../assets/trousers/trousers_3.jpg" class="card-img-top">
+    <div>
+      <div>Number of units: {{itemService.trouserInCart3L.number}}</div>
+      <div>Size: {{itemService.trouserInCart3L.size}}</div>
+      <div>Price per unit: {{itemService.trouserInCart3L.price}}</div>
+      <hr>
+      <div>Subtotal: {{itemService.trouserInCart3L.number * itemService.trouserInCart3L.price}} EUR</div>
+    </div>
+  </div>
+
   </div>
 
   <br>
   <br>
+  <div>Total price: {{itemService.cartTotalPrice}} EUR</div>
   <br>
   <br>
 

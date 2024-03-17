@@ -35,7 +35,22 @@ export class ItemService {
     shirtInCart3M: Item;
     shirtInCart3L: Item;
 
+    trouserInCart1S: Item;
+    trouserInCart1M: Item;
+    trouserInCart1L: Item;
+
+    trouserInCart2S: Item;
+    trouserInCart2M: Item;
+    trouserInCart2L: Item;
+
+    trouserInCart3S: Item;
+    trouserInCart3M: Item;
+    trouserInCart3L: Item;
+
     sentOrders: InventoryItem[] = [];
+
+    inventoryTotalPrice: number = 0;
+    cartTotalPrice: number = 0;
 
     orderId: number = 0;
 

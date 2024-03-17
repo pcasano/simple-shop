@@ -109,8 +109,6 @@ export class ShoesPageComponent {
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
 
-    console.log("En shoe page:");
-    console.log(this.itemService.shoeInCart1S);
   }
 
   private getTotalShoeGivenRelativeShoeAndSize(relativeShoe: Item, size: string): Item {
@@ -140,6 +138,26 @@ export class ShoesPageComponent {
     this.itemService.shoeInCart1L.number = 0;
     this.itemService.shoeInCart2L.number = 0;
     this.itemService.shoeInCart3L.number = 0;
+
+    this.itemService.shirtInCart1S.number = 0;
+    this.itemService.shirtInCart2S.number = 0;
+    this.itemService.shirtInCart3S.number = 0;
+    this.itemService.shirtInCart1M.number = 0;
+    this.itemService.shirtInCart2M.number = 0;
+    this.itemService.shirtInCart3M.number = 0;
+    this.itemService.shirtInCart1L.number = 0;
+    this.itemService.shirtInCart2L.number = 0;
+    this.itemService.shirtInCart3L.number = 0;
+
+    this.itemService.trouserInCart1S.number = 0;
+    this.itemService.trouserInCart2S.number = 0;
+    this.itemService.trouserInCart3S.number = 0;
+    this.itemService.trouserInCart1M.number = 0;
+    this.itemService.trouserInCart2M.number = 0;
+    this.itemService.trouserInCart3M.number = 0;
+    this.itemService.trouserInCart1L.number = 0;
+    this.itemService.trouserInCart2L.number = 0;
+    this.itemService.trouserInCart3L.number = 0;
     }
 
   onSelectShowSize_1(value: string) {

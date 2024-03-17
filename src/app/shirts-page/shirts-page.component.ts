@@ -73,21 +73,21 @@ export class ShirtsPageComponent {
       type: "shirt",
       model: "first_type",
       number: this.shirtModelCounter_1,
-      price: 50,
+      price: 75,
       size: this.shirtSize_1
     }
     let shirt_2 = {
       type: "shirt",
       model: "second_type",
       number: this.shirtModelCounter_2,
-      price: 60,
+      price: 20,
       size: this.shirtSize_2
     }
     let shirt_3 = {
       type: "shirt",
       model: "third_type",
       number: this.shirtModelCounter_3,
-      price: 70,
+      price: 65,
       size: this.shirtSize_3
     }
 

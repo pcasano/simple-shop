@@ -37,7 +37,18 @@ export class AppComponent {
       this.itemService.shirtInCart3S = this.initShirtGivenTypeAndSize("third_type", "S");
       this.itemService.shirtInCart3M = this.initShirtGivenTypeAndSize("third_type", "M");
       this.itemService.shirtInCart3L = this.initShirtGivenTypeAndSize("third_type", "L");
+
+      this.itemService.trouserInCart1S = this.initTrousersGivenTypeAndSize("first_type", "S");
+      this.itemService.trouserInCart1M = this.initTrousersGivenTypeAndSize("first_type", "M");
+      this.itemService.trouserInCart1L = this.initTrousersGivenTypeAndSize("first_type", "L");
+      this.itemService.trouserInCart2S = this.initTrousersGivenTypeAndSize("second_type", "S");
+      this.itemService.trouserInCart2M = this.initTrousersGivenTypeAndSize("second_type", "M");
+      this.itemService.trouserInCart2L = this.initTrousersGivenTypeAndSize("second_type", "L");
+      this.itemService.trouserInCart3S = this.initTrousersGivenTypeAndSize("third_type", "S");
+      this.itemService.trouserInCart3M = this.initTrousersGivenTypeAndSize("third_type", "M");
+      this.itemService.trouserInCart3L = this.initTrousersGivenTypeAndSize("third_type", "L");
     }
+    
 
     private initShirtGivenTypeAndSize(type: string, size: string): Item {
       return {
@@ -59,7 +70,18 @@ export class AppComponent {
       }
     }
 
+    private initTrousersGivenTypeAndSize(type: string, size: string): Item {
+      return {
+        type: "trouser",
+        model: type,
+        number: 0,
+        price: 50,
+        size: size
+      }
+    }
+
     clickOnCart() {
+      this.itemService.cartTotalPrice = this.itemService.totalCartItems.map(order => order.price * order.number).reduce((acc, num) => acc + num, 0);
       this.router.navigateByUrl("cart");
     }
 
