@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ItemService } from './item.service';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ItemService } from './item.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AgGridModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent]

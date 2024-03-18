@@ -1,7 +1,17 @@
 <br>
 <br>
 <div class="container col-12">
-    <table class="table table-bordered">
+
+
+  <ag-grid-angular
+  class="ag-theme-alpine"
+  style="height: 400px; width: 100%;"
+  [rowData]="itemService.sentOrders"
+  [columnDefs]="colDefs2"
+  [defaultColDef]="defaultColDef">
+  </ag-grid-angular>
+
+    <!-- <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -28,7 +38,7 @@
       </tr>
 
     </tbody>
-  </table>
+  </table> -->
   <br>
   <hr>
   <br>
@@ -43,5 +53,10 @@
     </div>
 </div>
 <br>
+
+
+
+
+
 
 </div>

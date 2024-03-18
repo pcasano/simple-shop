@@ -61,7 +61,7 @@ export class CartComponent {
     
     this.onEmptyCart();
     this.router.navigateByUrl("inventory");
-
+    console.log(this.itemService.sentOrders);
   }
 
   private getItem(item: Item): InventoryItem {
