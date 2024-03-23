@@ -1,0 +1,18 @@
+.buttons-margins {
+    margin-left: 65px;
+    margin-right: 65px;
+}
+
+.counter-padding {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.counter-score-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+}

@@ -29,4 +29,14 @@ export class AppComponent {
       this.router.navigateByUrl("home");
     }
 
+    onGoToTrousers() {
+      this.router.navigateByUrl("trousers");
+    }
+    onGoToShirts() {
+      this.router.navigateByUrl("shirts");
+    }
+    onGoToShoes() {
+      this.router.navigateByUrl("shoes");
+    }
+
 }

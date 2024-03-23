@@ -4,10 +4,14 @@
       <h1 (click)="clickOnLogo()">Shop of Pablo</h1>
     </div>
     <div class="icons-block">
+      <div class="categories">
+        <div class="categories-margin hover-element before-hover-element" (click)="onGoToShoes()">Shoes</div>
+        <div class="categories-margin hover-element before-hover-element" (click)="onGoToShirts()">Shirts</div>
+        <div class="categories-margin hover-element before-hover-element" (click)="onGoToTrousers()">Trousers</div>
+      </div>
       <i class="bi bi-list h3" (click)="clickOnInventory()"></i>
       <div *ngIf="itemService.totalCartItems.length>0; else elseBlock">
-        <div><i class="bi bi-cart-check h3" (click)="clickOnCart()"></i></div>
-        
+        <div><i class="bi bi-cart-check h3" (click)="clickOnCart()"></i></div>       
       </div>
       <ng-template #elseBlock><i class="bi bi-cart h3" (click)="clickOnCart()"></i></ng-template>
     </div>

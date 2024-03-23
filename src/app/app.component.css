@@ -19,3 +19,22 @@ h1 {
     align-items: center;
 }
 
+.categories {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.categories-margin {
+    margin: 15px;
+}
+
+.hover-element:hover {
+    border-bottom: 2px solid transparent;
+    border-color: white;
+    transition: border-bottom 0.3s; /* Add transition for smooth effect */
+}
+
+.before-hover-element {
+    border-bottom: 2px solid transparent;
+    border-color: rgb(0, 81, 255);
+}
