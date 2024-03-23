@@ -18,8 +18,6 @@ export class CartComponent {
     ) {}
 
   onSendOrder() {
-    let ordersToSend: InventoryItem[]= [];
-
     if(this.itemService.totalCartItems.length > 0) {
       this.itemService.orderId++;
       this.itemService.totalCartItems.forEach(item => this.itemService.sentOrders.push(this.getItem(item)));
@@ -52,6 +50,7 @@ export class CartComponent {
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];
+    this.itemService.cartTotalPrice = 0;
   }
 
 }
