@@ -63,101 +63,65 @@ export class ShoesPageComponent {
       model: "first_type",
       number: this.shoeModelCounter_1,
       price: 50,
-      size: this.shoeSize_1
+      size: this.shoeSize_1,
+      image: "../assets/shoes/shoe_1.jpg" 
     }
     let shoe_2 = {
       type: "shoe",
       model: "second_type",
       number: this.shoeModelCounter_2,
       price: 60,
-      size: this.shoeSize_2
+      size: this.shoeSize_2,
+      image: "../assets/shoes/shoe_2.jpg"
     }
     let shoe_3 = {
       type: "shoe",
       model: "third_type",
       number: this.shoeModelCounter_3,
       price: 70,
-      size: this.shoeSize_3
+      size: this.shoeSize_3,
+      image: "../assets/shoes/shoe_3.jpg"
     }
 
     if(shoe_1.number > 0) {
       this.itemService.shoes.push(shoe_1);
-      this.itemService.totalCartItems.push(shoe_1);
     } 
     if (shoe_2.number > 0) {
       this.itemService.shoes.push(shoe_2);
-      this.itemService.totalCartItems.push(shoe_2);
     }
     if (shoe_3.number > 0) {
       this.itemService.shoes.push(shoe_3);
-      this.itemService.totalCartItems.push(shoe_3);
     }
-
-    this.itemService.shoeInCart1S = this.getTotalShoeGivenRelativeShoeAndSize(shoe_1, "S");
-    this.itemService.shoeInCart1M = this.getTotalShoeGivenRelativeShoeAndSize(shoe_1, "M");
-    this.itemService.shoeInCart1L = this.getTotalShoeGivenRelativeShoeAndSize(shoe_1, "L");
-
-    this.itemService.shoeInCart2S = this.getTotalShoeGivenRelativeShoeAndSize(shoe_2, "S");
-    this.itemService.shoeInCart2M = this.getTotalShoeGivenRelativeShoeAndSize(shoe_2, "M");
-    this.itemService.shoeInCart2L = this.getTotalShoeGivenRelativeShoeAndSize(shoe_2, "L");
-
-    this.itemService.shoeInCart3S = this.getTotalShoeGivenRelativeShoeAndSize(shoe_3, "S");
-    this.itemService.shoeInCart3M = this.getTotalShoeGivenRelativeShoeAndSize(shoe_3, "M");
-    this.itemService.shoeInCart3L = this.getTotalShoeGivenRelativeShoeAndSize(shoe_3, "L");
 
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
 
+    this.itemService.shoes.forEach(shoe => this.itemService.totalCartItems.push(shoe));
+    this.itemService.totalCartItems = this.consolidateShoes(this.itemService.totalCartItems);
+    this.itemService.shoes = [];
   }
 
-  private getTotalShoeGivenRelativeShoeAndSize(relativeShoe: Item, size: string): Item {
-    let shoes = this.itemService.totalCartItems.filter(shoe => shoe.type=="shoe" && shoe.model==relativeShoe.model && shoe.size==size).map(shoe => shoe.number);
-    let number =  shoes.reduce((acc, num) => acc + num, 0);
-    return {
-      type: "shoe",
-      model: relativeShoe.model,
-      number: number,
-      price: relativeShoe.price,
-      size: size
-    }
-  }
+  consolidateShoes(shoes: Item[]): Item[] {
+    const consolidated: { [key: string]: Item } = {};
+
+    shoes.forEach(shoe => {
+        const key = `${shoe.model}_${shoe.size}`;
+        if (consolidated[key]) {
+            consolidated[key].number += shoe.number;
+        } else {
+            consolidated[key] = { ...shoe };
+        }
+    });
+
+    return Object.values(consolidated);
+}
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];
     this.shoeModelCounter_1 = 0;
     this.shoeModelCounter_2 = 0;
     this.shoeModelCounter_3 = 0;
-
-    this.itemService.shoeInCart1S.number = 0;
-    this.itemService.shoeInCart2S.number = 0;
-    this.itemService.shoeInCart3S.number = 0;
-    this.itemService.shoeInCart1M.number = 0;
-    this.itemService.shoeInCart2M.number = 0;
-    this.itemService.shoeInCart3M.number = 0;
-    this.itemService.shoeInCart1L.number = 0;
-    this.itemService.shoeInCart2L.number = 0;
-    this.itemService.shoeInCart3L.number = 0;
-
-    this.itemService.shirtInCart1S.number = 0;
-    this.itemService.shirtInCart2S.number = 0;
-    this.itemService.shirtInCart3S.number = 0;
-    this.itemService.shirtInCart1M.number = 0;
-    this.itemService.shirtInCart2M.number = 0;
-    this.itemService.shirtInCart3M.number = 0;
-    this.itemService.shirtInCart1L.number = 0;
-    this.itemService.shirtInCart2L.number = 0;
-    this.itemService.shirtInCart3L.number = 0;
-
-    this.itemService.trouserInCart1S.number = 0;
-    this.itemService.trouserInCart2S.number = 0;
-    this.itemService.trouserInCart3S.number = 0;
-    this.itemService.trouserInCart1M.number = 0;
-    this.itemService.trouserInCart2M.number = 0;
-    this.itemService.trouserInCart3M.number = 0;
-    this.itemService.trouserInCart1L.number = 0;
-    this.itemService.trouserInCart2L.number = 0;
-    this.itemService.trouserInCart3L.number = 0;
     }
 
   onSelectShowSize_1(value: string) {
