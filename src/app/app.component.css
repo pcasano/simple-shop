@@ -3,13 +3,19 @@ i {
 }
 
 .header-prop {
-    background-color: rgb(0, 81, 255);
+    background-color: rgb(0, 119, 255);
     color: white;
 }
 
 h1 {
     padding-left: 258px;
+    font-family: 'Font1';
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-weight: 44;
+    font-style: normal;
 }
+
 
 .icons-block {
     padding-right: 258px;
@@ -36,5 +42,5 @@ h1 {
 
 .before-hover-element {
     border-bottom: 2px solid transparent;
-    border-color: rgb(0, 81, 255);
+    border-color: rgb(0, 119, 255);
 }
