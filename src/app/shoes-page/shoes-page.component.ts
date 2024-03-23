@@ -98,24 +98,9 @@ export class ShoesPageComponent {
     this.shoeModelCounter_3 = 0;
 
     this.itemService.shoes.forEach(shoe => this.itemService.totalCartItems.push(shoe));
-    this.itemService.totalCartItems = this.consolidateShoes(this.itemService.totalCartItems);
+    this.itemService.totalCartItems = this.itemService.consolidateItem(this.itemService.totalCartItems);
     this.itemService.shoes = [];
   }
-
-  consolidateShoes(shoes: Item[]): Item[] {
-    const consolidated: { [key: string]: Item } = {};
-
-    shoes.forEach(shoe => {
-        const key = `${shoe.model}_${shoe.size}`;
-        if (consolidated[key]) {
-            consolidated[key].number += shoe.number;
-        } else {
-            consolidated[key] = { ...shoe };
-        }
-    });
-
-    return Object.values(consolidated);
-}
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];

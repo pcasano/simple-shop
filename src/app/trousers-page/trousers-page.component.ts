@@ -99,24 +99,9 @@ export class TrousersPageComponent {
     this.trouserModelCounter_3 = 0;
 
     this.itemService.trousers.forEach(trouser => this.itemService.totalCartItems.push(trouser));
-    this.itemService.totalCartItems = this.consolidateTrousers(this.itemService.totalCartItems);
+    this.itemService.totalCartItems = this.itemService.consolidateItem(this.itemService.totalCartItems);
     this.itemService.trousers = [];
   }
-
-  consolidateTrousers(items: Item[]): Item[] {
-    const consolidated: { [key: string]: Item } = {};
-
-    items.forEach(item => {
-        const key = `${item.model}_${item.size}`;
-        if (consolidated[key]) {
-            consolidated[key].number += item.number;
-        } else {
-            consolidated[key] = { ...item };
-        }
-    });
-
-    return Object.values(consolidated);
-}
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemService } from '../item.service';
 import { Router } from '@angular/router';
-import { Item } from '../item';
 
 @Component({
   selector: 'app-shirts-page',
@@ -109,24 +108,9 @@ export class ShirtsPageComponent {
     this.shirtModelCounter_3 = 0;
 
     this.itemService.shirts.forEach(shirt => this.itemService.totalCartItems.push(shirt));
-    this.itemService.totalCartItems = this.consolidateShirts(this.itemService.totalCartItems);
+    this.itemService.totalCartItems = this.itemService.consolidateItem(this.itemService.totalCartItems);
     this.itemService.shirts = [];
   }
-
-  consolidateShirts(items: Item[]): Item[] {
-    const consolidated: { [key: string]: Item } = {};
-
-    items.forEach(item => {
-        const key = `${item.model}_${item.size}`;
-        if (consolidated[key]) {
-            consolidated[key].number += item.number;
-        } else {
-            consolidated[key] = { ...item };
-        }
-    });
-
-    return Object.values(consolidated);
-}
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];
@@ -134,6 +118,4 @@ export class ShirtsPageComponent {
     this.shirtModelCounter_2 = 0;
     this.shirtModelCounter_3 = 0;
     }
-
-
 }

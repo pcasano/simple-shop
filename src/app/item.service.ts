@@ -29,4 +29,19 @@ export class ItemService {
     addTrousers(trouser: Item) {
         this.trousers.push(trouser);
     }
+
+    consolidateItem(items: Item[]): Item[] {
+        const consolidated: { [key: string]: Item } = {};
+    
+        items.forEach(item => {
+            const key = `${item.type}_${item.model}_${item.size}`;
+            if (consolidated[key]) {
+                consolidated[key].number += item.number;
+            } else {
+                consolidated[key] = { ...item };
+            }
+        });
+    
+        return Object.values(consolidated);
+    }
 }
