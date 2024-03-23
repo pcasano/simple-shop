@@ -1,3 +1,21 @@
 i {
     font-size: larger;
 }
+
+.header-prop {
+    background-color: rgb(0, 81, 255);
+    color: white;
+}
+
+h1 {
+    padding-left: 258px;
+}
+
+.icons-block {
+    padding-right: 258px;
+    gap: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
