@@ -17,10 +17,11 @@ export class SupportFormularComponent {
   userForm: FormGroup = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
-    email: new FormControl(''),
-    country: new FormControl(''),
-    telephone: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    telephone: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.minLength(6)]),
+    text: new FormControl('', [Validators.required, Validators.minLength(20)])
 }); 
+
 
 onFormSubmit(): void {
   const obj = this.userForm.value;
@@ -34,6 +35,12 @@ onFormSubmit(): void {
   }
 
   this.userForm.reset();
+  this.router.navigateByUrl("home");
 } 
+
+onGoHome() {
+  this.router.navigateByUrl("home");
+}
+
 
 }
