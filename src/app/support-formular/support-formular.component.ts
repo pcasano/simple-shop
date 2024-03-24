@@ -37,6 +37,7 @@ onFormSubmit(): void {
 
   this.userForm.reset();
   this.showAlert = true;
+  this.waitAndCloseAlert();
 } 
 
 onGoHome() {
@@ -45,6 +46,13 @@ onGoHome() {
 
 onCloseAlertButton() {
   this.showAlert = false;
+}
+
+private waitAndCloseAlert() {
+  setTimeout(() => {
+      this.showAlert = false;
+      console.log("Waited for 3 seconds!");
+  }, 3000);
 }
 
 
