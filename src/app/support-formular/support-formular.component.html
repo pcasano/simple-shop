@@ -45,9 +45,21 @@
             </div>
             </div>
         <div>
-            <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary buttons-margins">Submit</button>
+            <div class="buttons-margins">
+                <button type="button" class="btn btn-primary" (click)="onGoHome()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go Home</button>
+                <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+            </div>
             <br>
             <br>
         </div>
     </form>
+    <div class="d-flex justify-content-center" *ngIf="showAlert">
+        <div class="alert alert-success alert-sm" role="alert">
+            <div>Message successfully sent</div>
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="onCloseAlertButton()"></button>
+          </div>
+
+    </div>
+
 </div>

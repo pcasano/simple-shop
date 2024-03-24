@@ -4,10 +4,20 @@
     margin-top: 25px;
 }
 
+button {
+    margin-right: 20px;
+}
+
 form {
     margin-top: 20px;
 }
 
 span {
     color: red;
+}
+
+.alert-sm {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
 }

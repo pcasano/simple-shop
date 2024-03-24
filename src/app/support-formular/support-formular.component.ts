@@ -22,6 +22,7 @@ export class SupportFormularComponent {
     text: new FormControl('', [Validators.required, Validators.minLength(20)])
 }); 
 
+    showAlert: boolean = false;
 
 onFormSubmit(): void {
   const obj = this.userForm.value;
@@ -35,11 +36,15 @@ onFormSubmit(): void {
   }
 
   this.userForm.reset();
-  this.router.navigateByUrl("home");
+  this.showAlert = true;
 } 
 
 onGoHome() {
   this.router.navigateByUrl("home");
+}
+
+onCloseAlertButton() {
+  this.showAlert = false;
 }
 
 
