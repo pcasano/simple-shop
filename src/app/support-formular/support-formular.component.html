@@ -1,0 +1,39 @@
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+        <div class="row mx-5">
+            <div class="mb-3 col">
+                <label for="" class="form-label">First name</label>
+                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+                <span style="color: red;"  *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched">First name field is required</span>
+              </div>
+              <div class="mb-3 col">
+                <label for="" class="form-label">Last name</label>
+                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+                <span style="color: red;"  *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched">Last name field is required</span>
+              </div>
+        </div>    
+        <div class="row mx-5">
+            <div class="mb-3 col">
+                <label for="" class="form-label">Email</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Email">
+              </div>
+              <div class="mb-3 col">
+                <label for="" class="form-label">Number</label>
+                <input type="text" class="form-control" formControlName="telephone" placeholder="Telephone">
+              </div>
+        </div>
+        <div class="row mx-5">
+            <div class="mb-3 col">
+                <br>
+                <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                <textarea class="form-control" formControlName="text" placeholder="Message" rows="7"></textarea>
+            </div>
+            </div>
+        <div>
+            <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary mx-5">Submit</button>
+            <br>
+            <br>
+        </div>
+    </form>
+
+</div>

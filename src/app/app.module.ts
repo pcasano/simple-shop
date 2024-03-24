@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { ItemService } from './item.service';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
+import { SupportFormularComponent } from './support-formular/support-formular.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
@@ -22,15 +24,20 @@ import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
     TrousersPageComponent,
     CartComponent,
     HomeComponent,
-    InventoryComponent
+    InventoryComponent,
+    SupportFormularComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AgGridModule
+    AgGridModule,
+    ReactiveFormsModule
   ],
-  providers: [ItemService],
+  providers: [
+    ItemService, 
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

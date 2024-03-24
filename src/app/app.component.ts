@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemService } from './item.service';
-import { Item } from './item';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +8,7 @@ import { Item } from './item';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
 
   title = 'simple-shop';
 
@@ -38,5 +38,8 @@ export class AppComponent {
     onGoToShoes() {
       this.router.navigateByUrl("shoes");
     }
+    onGoToHelp() {
+      this.router.navigateByUrl("help");
+      }
 
 }
