@@ -12,11 +12,11 @@
         <div class="categories-margin hover-element before-hover-element" (click)="onGoToShirts()">Shirts</div>
         <div class="categories-margin hover-element before-hover-element" (click)="onGoToTrousers()">Trousers</div>
       </div>
-      <i class="bi bi-list h3" (click)="clickOnInventory()"></i>
+      <div><i class="bi bi-list h3" (click)="clickOnInventory()"></i></div>    
       <div *ngIf="itemService.totalCartItems.length>0; else elseBlock">
         <div><i class="bi bi-cart-check h3" (click)="clickOnCart()"></i></div>       
       </div>
-      <ng-template #elseBlock><i class="bi bi-cart h3" (click)="clickOnCart()"></i></ng-template>
+      <ng-template #elseBlock><div><i class="bi bi-cart h3" (click)="clickOnCart()"></i></div></ng-template>
       <i class="bi bi-question-circle" (click)="onGoToHelp()"></i>
     </div>
   </div>
