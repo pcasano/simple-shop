@@ -1,20 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemService } from './item.service';
+import { DataService } from './data.service';
+import { HttpClient } from '@angular/common/http';
+import { TypeWithModels } from './TypeWithModels';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
 
   title = 'simple-shop';
+  jsonData: any;
+
+  shoe: any;
 
   constructor(
     private router: Router,
-    public itemService: ItemService) {}  
+    public itemService: ItemService,
+    public dataService: DataService,
+    private http: HttpClient) {}  
 
     clickOnCart() {
       this.itemService.cartTotalPrice = this.itemService.totalCartItems.map(order => order.price * order.number).reduce((acc, num) => acc + num, 0);
@@ -35,11 +43,20 @@ export class AppComponent {
     onGoToShirts() {
       this.router.navigateByUrl("shirts");
     }
-    onGoToShoes() {
-      this.router.navigateByUrl("shoes");
-    }
     onGoToHelp() {
       this.router.navigateByUrl("help");
       }
+    onGoToShoes() {
+      this.router.navigateByUrl("shoes");
+    }
+
+
+    ngOnInit(): void {
+      this.http.get<any>('../assets/items.json').subscribe(res => {
+        this.dataService.responseData = res;
+      }
+        );
+
+    }
 
 }

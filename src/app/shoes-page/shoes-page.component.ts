@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemService } from '../item.service';
 import { Item } from '../item';
+import { DataService } from '../data.service';
 
 
 @Component({
@@ -9,11 +10,12 @@ import { Item } from '../item';
   templateUrl: './shoes-page.component.html',
   styleUrl: './shoes-page.component.css'
 })
-export class ShoesPageComponent {
+export class ShoesPageComponent implements OnInit{
 
   constructor(
     private router: Router,
-    private itemService: ItemService) {}
+    private itemService: ItemService,
+    private dataService: DataService) {}
 
   shoeModelCounter_1: number = 0;
   shoeModelCounter_2: number = 0;
@@ -22,6 +24,16 @@ export class ShoesPageComponent {
   shoeSize_1 = "";
   shoeSize_2 = "";
   shoeSize_3 = "";
+
+  firstTypeShoe: any;
+  secondTypeShoe: any;
+  thirdTypeShoe: any;
+
+  ngOnInit(): void {
+    this.firstTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "first_type");
+    this.secondTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "second_type");
+    this.thirdTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "third_type");
+  }
 
   increaseShoeModel1() {
     this.shoeModelCounter_1++;

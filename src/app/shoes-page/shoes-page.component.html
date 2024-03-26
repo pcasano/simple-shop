@@ -19,9 +19,7 @@
                 <div></div>
                 <select class="form-select" aria-label="Default select example" [(ngModel)]="shoeSize_1">
                     <option value="" disabled selected>Select an size</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
+                    <option  *ngFor="let size of firstTypeShoe.sizes" value={{size}}>{{size}}</option>
                   </select>
                   <div></div>
             </div>
@@ -41,9 +39,7 @@
                 <div></div>
                 <select #shoes2 class="form-select" aria-label="Default select example" [(ngModel)]="shoeSize_2">
                     <option value="" disabled selected>Select an size</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
+                    <option  *ngFor="let size of secondTypeShoe.sizes" value={{size}}>{{size}}</option>
                   </select>
                   <div></div>
             </div>
@@ -63,9 +59,7 @@
                 <div></div>
                 <select #shoes3 class="form-select" aria-label="Default select example" [(ngModel)]="shoeSize_3">
                     <option value="" disabled selected>Select an size</option>
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
+                    <option  *ngFor="let size of thirdTypeShoe.sizes" value={{size}}>{{size}}</option>
                   </select>
                   <div></div>
             </div>
