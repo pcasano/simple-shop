@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
   templateUrl: './shirts-page.component.html',
   styleUrl: './shirts-page.component.css'
 })
-export class ShirtsPageComponent {
+export class ShirtsPageComponent implements OnInit{
   
   constructor(
     private router: Router,

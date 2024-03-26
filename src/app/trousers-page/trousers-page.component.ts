@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemService } from '../item.service';
 import { Item } from '../item';
@@ -9,7 +9,7 @@ import { DataService } from '../data.service';
   templateUrl: './trousers-page.component.html',
   styleUrl: './trousers-page.component.css'
 })
-export class TrousersPageComponent {
+export class TrousersPageComponent implements OnInit{
 
 
   constructor(
