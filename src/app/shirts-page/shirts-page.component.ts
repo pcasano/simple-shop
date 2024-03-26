@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ItemService } from '../item.service';
 import { Router } from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-shirts-page',
@@ -11,7 +12,8 @@ export class ShirtsPageComponent {
   
   constructor(
     private router: Router,
-    private itemService: ItemService) {}
+    private itemService: ItemService,
+    private dataService: DataService) {}
 
   shirtModelCounter_1: number = 0;
   shirtModelCounter_2: number = 0;
@@ -20,6 +22,16 @@ export class ShirtsPageComponent {
   shirtSize_1 = "";
   shirtSize_2 = "";
   shirtSize_3 = "";
+
+  firstTypeShirt: any;
+  secondTypeShirt: any;
+  thirdTypeShirt: any;
+
+  ngOnInit(): void {
+    this.firstTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "first_type");
+    this.secondTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "second_type");
+    this.thirdTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "third_type");
+  }
 
   increaseShirtModel1() {
     this.shirtModelCounter_1++;

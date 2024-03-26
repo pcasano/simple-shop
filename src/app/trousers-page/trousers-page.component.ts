@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemService } from '../item.service';
 import { Item } from '../item';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-trousers-page',
@@ -13,7 +14,8 @@ export class TrousersPageComponent {
 
   constructor(
     private router: Router,
-    private itemService: ItemService) {}
+    private itemService: ItemService,
+    private dataService: DataService) {}
 
   trouserModelCounter_1: number = 0;
   trouserModelCounter_2: number = 0;
@@ -22,6 +24,16 @@ export class TrousersPageComponent {
   trouserSize_1 = "";
   trouserSize_2 = "";
   trouserSize_3 = "";
+
+  firstTypeTrouser: any;
+  secondTypeTrouser: any;
+  thirdTypeTrouser: any;
+
+  ngOnInit(): void {
+    this.firstTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "first_type");
+    this.secondTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "second_type");
+    this.thirdTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "third_type");
+  }
 
   increaseTrouserModel1() {
     this.trouserModelCounter_1++;
