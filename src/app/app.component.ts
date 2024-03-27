@@ -52,9 +52,12 @@ export class AppComponent implements OnInit{
 
 
     ngOnInit(): void {
-      this.http.get<any>('../assets/items.json').subscribe(res => {
+      console.log("from AppComponent");
+      this.dataService.fetchData().subscribe(
+        (res) => {
         this.dataService.responseData = res;
-      }
+      },
+      (error) => console.error('Error fetching data:', error)
         );
 
     }

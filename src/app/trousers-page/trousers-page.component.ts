@@ -30,6 +30,7 @@ export class TrousersPageComponent implements OnInit{
   thirdTypeTrouser: any;
 
   ngOnInit(): void {
+    console.log("from TrousersPageComponent");
     this.firstTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "first_type");
     this.secondTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "second_type");
     this.thirdTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "third_type");

@@ -28,6 +28,7 @@ export class ShirtsPageComponent implements OnInit{
   thirdTypeShirt: any;
 
   ngOnInit(): void {
+    console.log("from ShirtsPageComponent");
     this.firstTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "first_type");
     this.secondTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "second_type");
     this.thirdTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "third_type");

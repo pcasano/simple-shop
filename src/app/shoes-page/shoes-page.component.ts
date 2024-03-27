@@ -30,6 +30,7 @@ export class ShoesPageComponent implements OnInit{
   thirdTypeShoe: any;
 
   ngOnInit(): void {
+    console.log("from ShoePageComponent");
     this.firstTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "first_type");
     this.secondTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "second_type");
     this.thirdTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "third_type");
