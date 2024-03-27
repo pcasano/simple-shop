@@ -4,9 +4,14 @@
     <br>
     <br>
     <div class="row">
+        <div *ngIf="firstTypeShoe === undefined; else elseBlock1" class="col d-flex flex-column align-items-center">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>
+          <ng-template #elseBlock1>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/shoes/shoe_1.jpg" class="card-img-top">
+                <img [src]="firstTypeShoe.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex">
@@ -24,9 +29,15 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
+    <div *ngIf="secondTypeShoe === undefined; else elseBlock2" class="col d-flex flex-column align-items-center">
+        <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div></div>
+      <ng-template #elseBlock2>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/shoes/shoe_2.jpg" class="card-img-top">
+                <img [src]="secondTypeShoe.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex">
@@ -44,9 +55,15 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
+    <div *ngIf="thirdTypeShoe === undefined; else elseBlock3" class="col d-flex flex-column align-items-center">
+        <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div></div>
+      <ng-template #elseBlock3>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/shoes/shoe_3.jpg" class="card-img-top">
+                <img [src]="thirdTypeShoe.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex">
@@ -64,6 +81,7 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
     </div>
     <br>
     <br>

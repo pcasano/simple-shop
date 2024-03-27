@@ -4,7 +4,7 @@
             "models": [
                 {
                     "model": "first_type",
-                    "image": "/assets/shoes/shoe-1.jpg",
+                    "image": "../assets/shoes/shoe_1.jpg",
                     "sizes": [
                         "S",
                         "L"
@@ -12,7 +12,7 @@
                 },
                 {
                     "model": "second_type",
-                    "image": "/assets/shoes/shoe-2.jpg",
+                    "image": "../assets/shoes/shoe_2.jpg",
                     "sizes": [
                         "S",
                         "M",
@@ -21,7 +21,7 @@
                 },
                 {
                     "model": "third_type",
-                    "image": "/assets/shoes/shoe-3.jpg",
+                    "image": "../assets/shoes/shoe_3.jpg",
                     "sizes": [
                         "S",
                         "M",
@@ -36,7 +36,7 @@
             "models": [
                 {
                     "model": "first_type",
-                    "image": "/assets/shirts/shirt-1.jpg",
+                    "image": "../assets/shirts/shirt_1.jpg",
                     "sizes": [
                         "S",
                         "M",
@@ -45,7 +45,7 @@
                 },
                 {
                     "model": "second_type",
-                    "image": "/assets/shirts/shirt-2.jpg",
+                    "image": "../assets/shirts/shirt_2.jpg",
                     "sizes": [
                         "S",
                         "XL"
@@ -53,7 +53,7 @@
                 },
                 {
                     "model": "third_type",
-                    "image": "/assets/shirts/shirt-3.jpg",
+                    "image": "../assets/shirts/shirt_3.jpg",
                     "sizes": [
                         "M",
                         "L",
@@ -67,7 +67,7 @@
             "models": [
                 {
                     "model": "first_type",
-                    "image": "/assets/trousers/trouser-1.jpg",
+                    "image": "../assets/trousers/trousers_1.jpg",
                     "sizes": [
                         "S",
                         "M",
@@ -76,7 +76,7 @@
                 },
                 {
                     "model": "second_type",
-                    "image": "/assets/trousers/trouser-2.jpg",
+                    "image": "../assets/trousers/trousers_2.jpg",
                     "sizes": [
                         "S",
                         "L",
@@ -85,7 +85,7 @@
                 },
                 {
                     "model": "third_type",
-                    "image": "/assets/trousers/trouser-3.jpg",
+                    "image": "../assets/trousers/trousers_3.jpg",
                     "sizes": [
                         "XS",
                         "L",

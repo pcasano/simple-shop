@@ -4,9 +4,14 @@
     <br>
     <br>
     <div class="row">
+        <div *ngIf="firstTypeTrouser === undefined; else elseBlock1" class="col d-flex flex-column align-items-center">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>
+          <ng-template #elseBlock1>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/trousers/trousers_1.jpg" class="card-img-top">
+                <img [src]="firstTypeTrouser.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
@@ -26,9 +31,15 @@
                   <div></div>
             </div>
         </div>
+        </ng-template>
+        <div *ngIf="secondTypeTrouser === undefined; else elseBlock2" class="col d-flex flex-column align-items-center">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>
+          <ng-template #elseBlock2>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/trousers/trousers_2.jpg" class="card-img-top">
+                <img [src]="secondTypeTrouser.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
@@ -48,9 +59,15 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
+    <div *ngIf="thirdTypeTrouser === undefined; else elseBlock3" class="col d-flex flex-column align-items-center">
+        <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div></div>
+      <ng-template #elseBlock3>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/trousers/trousers_3.jpg" class="card-img-top">
+                <img [src]="thirdTypeTrouser.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
@@ -70,6 +87,7 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
     </div>
     <br>
     <br>

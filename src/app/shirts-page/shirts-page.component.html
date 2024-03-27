@@ -4,31 +4,42 @@
     <br>
     <br>
     <div class="row">
+        <div *ngIf="firstTypeShirt === undefined; else elseBlock1" class="col d-flex flex-column align-items-center">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>
+          <ng-template #elseBlock1>
+            <div class="col d-flex flex-column align-items-center">
+                <div class="card" style="width: 18rem;">
+                    <img [src]="firstTypeShirt.image" class="card-img-top">
+                </div>
+                <br>
+                <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                    <div></div>
+                    <i class="bi bi-dash-circle h3" (click)="decreaseShirtModel1()"></i>
+                    <div>{{shirtModelCounter_1}}</div>
+                    <i class="bi bi-plus-circle h3" (click)="increaseShirtModel1()"></i>
+                    <div></div>
+                </div>
+                <br>
+                <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                    <div></div>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="shirtSize_1">
+                        <option value="" disabled selected>Select an size</option>
+                        <option  *ngFor="let size of firstTypeShirt.sizes" value={{size}}>{{size}}</option>
+                    </select>
+                    <div></div>
+                </div>
+            </div>
+        </ng-template>
+        <div *ngIf="secondTypeShirt === undefined; else elseBlock2" class="col d-flex flex-column align-items-center">
+            <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div></div>
+          <ng-template #elseBlock2>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/shirts/shirt_1.jpg" class="card-img-top">
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <i class="bi bi-dash-circle h3" (click)="decreaseShirtModel1()"></i>
-                <div>{{shirtModelCounter_1}}</div>
-                <i class="bi bi-plus-circle h3" (click)="increaseShirtModel1()"></i>
-                <div></div>
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <select class="form-select" aria-label="Default select example" [(ngModel)]="shirtSize_1">
-                    <option value="" disabled selected>Select an size</option>
-                    <option  *ngFor="let size of firstTypeShirt.sizes" value={{size}}>{{size}}</option>
-                  </select>
-                  <div></div>
-            </div>
-        </div>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img src="../assets/shirts/shirt_2.jpg" class="card-img-top">
+                <img [src]="secondTypeShirt.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
@@ -48,9 +59,15 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
+    <div *ngIf="thirdTypeShirt === undefined; else elseBlock3" class="col d-flex flex-column align-items-center">
+        <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div></div>
+      <ng-template #elseBlock3>
         <div class="col d-flex flex-column align-items-center">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/shirts/shirt_3.jpg" class="card-img-top">
+                <img [src]="thirdTypeShirt.image" class="card-img-top">
             </div>
             <br>
             <div class="justify-content-evenly d-flex" style="width: 18rem;">
@@ -70,7 +87,9 @@
                   <div></div>
             </div>
         </div>
+    </ng-template>
     </div>
+
     <br>
     <br>
     <br>

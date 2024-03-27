@@ -13,7 +13,7 @@ export class ShirtsPageComponent implements OnInit{
   constructor(
     private router: Router,
     private itemService: ItemService,
-    private dataService: DataService) {}
+    public dataService: DataService) {}
 
   shirtModelCounter_1: number = 0;
   shirtModelCounter_2: number = 0;
@@ -31,6 +31,8 @@ export class ShirtsPageComponent implements OnInit{
     this.firstTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "first_type");
     this.secondTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "second_type");
     this.thirdTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "third_type");
+
+    console.log(this.firstTypeShirt.image);
   }
 
   increaseShirtModel1() {
