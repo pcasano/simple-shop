@@ -10,15 +10,19 @@
   [columnDefs]="colDefs2"
   [defaultColDef]="defaultColDef">
   </ag-grid-angular>
-
+  <div class="price-table" >
+    <div class="d-flex justify-content-between" *ngFor="let order of itemService.sentOrders">
+      <div>{{order.number}}  x  {{order.type}}/{{order.model}}</div>
+      <div>{{order.totalPrice}} EUR</div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+      <div>Total price:</div>
+      <div>{{itemService.inventoryTotalPrice}} EUR</div>
+    </div>
+  </div>
   <br>
-  <hr>
-  <br>
-  <br>
-  <div>Total price: {{itemService.inventoryTotalPrice }} EUR</div>
-  <br>
-
-  <div class="row">
+  <div class="row" style="margin-top: 50px;">
     <div class="col d-flex justify-content-start">
         <button type="button" class="btn btn-primary" (click)="onGoHome()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go Home</button>
         <p>&nbsp;&nbsp;</p>

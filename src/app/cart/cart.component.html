@@ -1,7 +1,5 @@
 <div class="container">
   <div class="d-flex flex-wrap">
-
-
     <div class="card" style="width: 18rem;" *ngFor="let item of itemService.totalCartItems">
       <img src={{item.image}} class="card-img-top">
       <div>
@@ -12,15 +10,20 @@
         <div>Subtotal: {{item.number * item.price}} EUR</div>
       </div>
     </div>
-
+  </div>
+  <div class="price-table" >
+    <div class="d-flex justify-content-between" *ngFor="let order of itemService.totalCartItems">
+      <div>{{order.number}}  x  {{order.type}}/{{order.model}}</div>
+      <div>{{order.price * order.number}} EUR</div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+      <div>Total price:</div>
+      <div>{{itemService.cartTotalPrice}} EUR</div>
+    </div>
   </div>
   <br>
-  <br>
-  <div>Total price: {{itemService.cartTotalPrice}} EUR</div>
-  <br>
-  <br>
-
-  <div class="row">
+  <div class="row" style="margin-top: 50px;">
     <div class="col d-flex justify-content-start align-items-end">
         <button type="button" class="btn btn-primary" (click)="onGoHome()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go Home</button>
         <p>&nbsp;&nbsp;</p>
