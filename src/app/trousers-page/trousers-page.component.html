@@ -4,91 +4,33 @@
     <br>
     <br>
     <div class="row">
-        <div *ngIf="firstTypeTrouser === undefined; else elseBlock1" class="col d-flex flex-column align-items-center">
+        <div *ngIf="trouserResponse === undefined; else elseBlock" class="col d-flex flex-column align-items-center">
             <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div></div>
-          <ng-template #elseBlock1>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img [src]="firstTypeTrouser.image" class="card-img-top">
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <i class="bi bi-dash-circle h3" (click)="decreaseTrouserModel1()"></i>
-                <div>{{trouserModelCounter_1}}</div>
-                <i class="bi bi-plus-circle h3" (click)="increaseTrouserModel1()"></i>
-                <div></div>
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <select class="form-select" aria-label="Default select example" [(ngModel)]="trouserSize_1">
-                    <option value="" disabled selected>Select an size</option>
-                    <option  *ngFor="let size of firstTypeTrouser.sizes" value={{size}}>{{size}}</option>
-                  </select>
-                  <div></div>
-            </div>
+                <span class="visually-hidden">Loading...</span>
+              </div></div>
+              <ng-template #elseBlock>
+                <div class="col d-flex flex-column align-items-center" *ngFor="let trouser of trouserResponse.models">
+                    <div class="card" style="width: 18rem;">
+                        <img [src]="trouser.image" class="card-img-top">
+                    </div>
+                    <br>
+                    <div class="justify-content-evenly d-flex">
+                        <i class="bi bi-dash-circle h3 counter-padding" (click)="decreaseCounter(trouser.model)"></i>
+                        <div class="counter-score-center">{{getTrouserCounter(trouser.model)}}</div>
+                        <i class="bi bi-plus-circle h3 counter-padding" (click)="increaseCounter(trouser.model)"></i>
+                    </div>
+                    <br>
+                    <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                        <div></div>
+                        <select class="form-select" aria-label="Default select example" (ngModelChange)="getTrouserSizeGivenModel(trouser.model)">
+                            <option value="" disabled selected>Select an size</option>
+                            <option  *ngFor="let size of trouser.sizes" value={{size}}>{{size}}</option>
+                          </select>
+                          <div></div>
+                    </div>
+                </div>
+            </ng-template>
         </div>
-        </ng-template>
-        <div *ngIf="secondTypeTrouser === undefined; else elseBlock2" class="col d-flex flex-column align-items-center">
-            <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div></div>
-          <ng-template #elseBlock2>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img [src]="secondTypeTrouser.image" class="card-img-top">
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <i class="bi bi-dash-circle h3" (click)="decreaseTrouserModel2()"></i>
-                <div>{{trouserModelCounter_2}}</div>
-                <i class="bi bi-plus-circle h3" (click)="increaseTrouserModel2()"></i>
-                <div></div>
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <select #shoes2 class="form-select" aria-label="Default select example" [(ngModel)]="trouserSize_2">
-                    <option value="" disabled selected>Select an size</option>
-                    <option  *ngFor="let size of secondTypeTrouser.sizes" value={{size}}>{{size}}</option>
-                  </select>
-                  <div></div>
-            </div>
-        </div>
-    </ng-template>
-    <div *ngIf="thirdTypeTrouser === undefined; else elseBlock3" class="col d-flex flex-column align-items-center">
-        <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div></div>
-      <ng-template #elseBlock3>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img [src]="thirdTypeTrouser.image" class="card-img-top">
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <i class="bi bi-dash-circle h3" (click)="decreaseTrouserModel3()"></i>
-                <div>{{trouserModelCounter_3}}</div>
-                <i class="bi bi-plus-circle h3" (click)="increaseTrouserModel3()"></i>
-                <div></div>
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <select #shoes3 class="form-select" aria-label="Default select example" [(ngModel)]="trouserSize_3">
-                    <option value="" disabled selected>Select an size</option>
-                    <option  *ngFor="let size of thirdTypeTrouser.sizes" value={{size}}>{{size}}</option>
-                  </select>
-                  <div></div>
-            </div>
-        </div>
-    </ng-template>
-    </div>
     <br>
     <br>
     <br>
