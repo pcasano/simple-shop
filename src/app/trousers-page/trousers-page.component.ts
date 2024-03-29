@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ItemService } from '../item.service';
 import { Item } from '../item';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-trousers-page',
@@ -11,116 +12,102 @@ import { DataService } from '../data.service';
 })
 export class TrousersPageComponent implements OnInit{
 
-
   constructor(
     private router: Router,
     private itemService: ItemService,
-    private dataService: DataService) {}
+    private http: HttpClient) { }
 
-  trouserModelCounter_1: number = 0;
-  trouserModelCounter_2: number = 0;
-  trouserModelCounter_3: number = 0;
+    trouserResponse: any;
+    trouserSizesAndNumbers: trouserSizeAndNumber[] = [];
+    trouserForTheCart: Item[] = [];
 
-  trouserSize_1 = "";
-  trouserSize_2 = "";
-  trouserSize_3 = "";
-
-  firstTypeTrouser: any;
-  secondTypeTrouser: any;
-  thirdTypeTrouser: any;
 
   ngOnInit(): void {
-    console.log("from TrousersPageComponent");
-    this.firstTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "first_type");
-    this.secondTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "second_type");
-    this.thirdTypeTrouser = this.dataService.getItemGivenTypeAndModel("trouser", "third_type");
+    this.http.get<any>('../assets/items-data/trousers.json').subscribe(
+      (res) => {
+        this.trouserResponse = res;
+        console.log(this.trouserResponse);
+        this.trouserResponse.models.forEach((trouser: any) => {
+          this.trouserSizesAndNumbers.push({
+            model: trouser.model,
+            size: "",
+            number: 0
+          });
+        })
+      },
+      (error) => console.error('Error fetching data:', error)
+    );
   }
 
-  increaseTrouserModel1() {
-    this.trouserModelCounter_1++;
+  increaseCounter(trouserModel: string) {
+    const selectedShirt = this.getTrouserGivenModel(trouserModel);
+      selectedShirt.number += 1;
   }
 
-  decreaseTrouserModel1() {
-    if(this.trouserModelCounter_1 > 0) {
-      this.trouserModelCounter_1--;
-    }    
+  decreaseCounter(trouserModel: string) {
+    const selectedShoe = this.getTrouserGivenModel(trouserModel);
+      if(selectedShoe.number > 0) {
+        selectedShoe.number -= 1;
+      }  
   }
 
-  increaseTrouserModel2() {
-    this.trouserModelCounter_2++;
+  getTrouserCounter(trouserModel: string): number {
+    const selectedShirt = this.getTrouserGivenModel(trouserModel);
+      return selectedShirt.number;
   }
 
-  decreaseTrouserModel2() {
-    if(this.trouserModelCounter_2 > 0) {
-      this.trouserModelCounter_2--;
-    }    
+  getTrouserSizeGivenModel(trouserModel: string): string {
+    const selectedShirt = this.getTrouserGivenModel(trouserModel);
+      return selectedShirt.size;
   }
 
-  increaseTrouserModel3() {
-    this.trouserModelCounter_3++;
-  }
-
-  decreaseTrouserModel3() {
-    if(this.trouserModelCounter_3 > 0) {
-      this.trouserModelCounter_3--;
-    }    
-  }
-
-  onGoHome() {
-    this.router.navigateByUrl("home");
+  getTrouserGivenModel(trouserModel: string): any {
+    const selectedShirt = this.trouserSizesAndNumbers.find(shoe => shoe.model === trouserModel);
+    if(selectedShirt) {
+        return selectedShirt;
+      } else {
+        throw new Error(`Shoe model ${trouserModel} not found`);
+      }
   }
 
   onAddToCart() {
-    let trouser_1 = {
-      type: "trouser",
-      model: "first_type",
-      number: this.trouserModelCounter_1,
-      price: 90,
-      size: this.trouserSize_1,
-      image: "../assets/trousers/trousers_1.jpg"
-    }
-    let trouser_2 = {
-      type: "trouser",
-      model: "second_type",
-      number: this.trouserModelCounter_2,
-      price: 115,
-      size: this.trouserSize_2,
-      image: "../assets/trousers/trousers_2.jpg"
-    }
-    let trouser_3 = {
-      type: "trouser",
-      model: "third_type",
-      number: this.trouserModelCounter_3,
-      price: 120,
-      size: this.trouserSize_3,
-      image: "../assets/trousers/trousers_3.jpg"
-    }
+    this.trouserResponse.models.forEach((trouser: any) => {     
+      if(this.getTrouserCounter(trouser.model) > 0) {
+        this.itemService.shoes.push({
+          type: "trouser",
+          model: trouser.model,
+          number: this.getTrouserCounter(trouser.model),
+          image: trouser.image,
+          price: trouser.price,
+          size: this.getTrouserSizeGivenModel(trouser.model)
+        });
+      }
+    });
 
-    if(trouser_1.number > 0) {
-      this.itemService.trousers.push(trouser_1);
-      this.itemService.totalCartItems.push(trouser_1);
-    } 
-    if (trouser_2.number > 0) {
-      this.itemService.trousers.push(trouser_2);
-    }
-    if (trouser_3.number > 0) {
-      this.itemService.trousers.push(trouser_3);
-    }
+    this.trouserResponse.models.forEach((trouser: any) => {
+      this.getTrouserGivenModel(trouser.model).number = 0;
+    });
 
-    this.trouserModelCounter_1 = 0;
-    this.trouserModelCounter_2 = 0;
-    this.trouserModelCounter_3 = 0;
-
-    this.itemService.trousers.forEach(trouser => this.itemService.totalCartItems.push(trouser));
+    this.itemService.shoes.forEach(shoe => this.itemService.totalCartItems.push(shoe));
     this.itemService.totalCartItems = this.itemService.consolidateItem(this.itemService.totalCartItems);
-    this.itemService.trousers = [];
+    this.itemService.shoes = [];
   }
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];
-    this.trouserModelCounter_1 = 0;
-    this.trouserModelCounter_2 = 0;
-    this.trouserModelCounter_3 = 0;
+    this.trouserResponse.models.forEach((trouser: any) => {
+      this.getTrouserGivenModel(trouser.model).number = 0;
+    });
     }
 
+    onGoHome() {
+      this.router.navigateByUrl("home");
+    }
+
+}
+
+export interface trouserSizeAndNumber {
+  model: string,
+  size: string,
+  number: number
 }

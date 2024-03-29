@@ -1,0 +1,36 @@
+
+{
+    "type": "trouser",
+    "models": [
+        {
+            "model": "first_type",
+            "image": "../assets/trousers/trousers_1.jpg",
+            "price": 70,
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        {
+            "model": "second_type",
+            "image": "../assets/trousers/trousers_2.jpg",
+            "price": 90,
+            "sizes": [
+                "S",
+                "L",
+                "XL"
+            ]
+        },
+        {
+            "model": "third_type",
+            "image": "../assets/trousers/trousers_3.jpg",
+            "price": 110,
+            "sizes": [
+                "XS",
+                "L",
+                "XL"
+            ]
+        }
+    ]
+}

@@ -4,92 +4,33 @@
     <br>
     <br>
     <div class="row">
-        <div *ngIf="firstTypeShirt === undefined; else elseBlock1" class="col d-flex flex-column align-items-center">
+        <div *ngIf="shirtsResponse === undefined; else elseBlock" class="col d-flex flex-column align-items-center">
             <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div></div>
-          <ng-template #elseBlock1>
-            <div class="col d-flex flex-column align-items-center">
-                <div class="card" style="width: 18rem;">
-                    <img [src]="firstTypeShirt.image" class="card-img-top">
+                <span class="visually-hidden">Loading...</span>
+              </div></div>
+              <ng-template #elseBlock>
+                <div class="col d-flex flex-column align-items-center" *ngFor="let shirt of shirtsResponse.models">
+                    <div class="card" style="width: 18rem;">
+                        <img [src]="shirt.image" class="card-img-top">
+                    </div>
+                    <br>
+                    <div class="justify-content-evenly d-flex">
+                        <i class="bi bi-dash-circle h3 counter-padding" (click)="decreaseCounter(shirt.model)"></i>
+                        <div class="counter-score-center">{{getShirtCounter(shirt.model)}}</div>
+                        <i class="bi bi-plus-circle h3 counter-padding" (click)="increaseCounter(shirt.model)"></i>
+                    </div>
+                    <br>
+                    <div class="justify-content-evenly d-flex" style="width: 18rem;">
+                        <div></div>
+                        <select class="form-select" aria-label="Default select example" (ngModelChange)="getShirtSizeGivenModel(shirt.model)">
+                            <option value="" disabled selected>Select an size</option>
+                            <option  *ngFor="let size of shirt.sizes" value={{size}}>{{size}}</option>
+                          </select>
+                          <div></div>
+                    </div>
                 </div>
-                <br>
-                <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                    <div></div>
-                    <i class="bi bi-dash-circle h3" (click)="decreaseShirtModel1()"></i>
-                    <div>{{shirtModelCounter_1}}</div>
-                    <i class="bi bi-plus-circle h3" (click)="increaseShirtModel1()"></i>
-                    <div></div>
-                </div>
-                <br>
-                <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                    <div></div>
-                    <select class="form-select" aria-label="Default select example" [(ngModel)]="shirtSize_1">
-                        <option value="" disabled selected>Select an size</option>
-                        <option  *ngFor="let size of firstTypeShirt.sizes" value={{size}}>{{size}}</option>
-                    </select>
-                    <div></div>
-                </div>
-            </div>
-        </ng-template>
-        <div *ngIf="secondTypeShirt === undefined; else elseBlock2" class="col d-flex flex-column align-items-center">
-            <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div></div>
-          <ng-template #elseBlock2>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img [src]="secondTypeShirt.image" class="card-img-top">
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <i class="bi bi-dash-circle h3" (click)="decreaseShirtModel2()"></i>
-                <div>{{shirtModelCounter_2}}</div>
-                <i class="bi bi-plus-circle h3" (click)="increaseShirtModel2()"></i>
-                <div></div>
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <select #shoes2 class="form-select" aria-label="Default select example" [(ngModel)]="shirtSize_2">
-                    <option value="" disabled selected>Select an size</option>
-                    <option  *ngFor="let size of secondTypeShirt.sizes" value={{size}}>{{size}}</option>
-                  </select>
-                  <div></div>
-            </div>
+            </ng-template>
         </div>
-    </ng-template>
-    <div *ngIf="thirdTypeShirt === undefined; else elseBlock3" class="col d-flex flex-column align-items-center">
-        <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div></div>
-      <ng-template #elseBlock3>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img [src]="thirdTypeShirt.image" class="card-img-top">
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <i class="bi bi-dash-circle h3" (click)="decreaseShirtModel3()"></i>
-                <div>{{shirtModelCounter_3}}</div>
-                <i class="bi bi-plus-circle h3" (click)="increaseShirtModel3()"></i>
-                <div></div>
-            </div>
-            <br>
-            <div class="justify-content-evenly d-flex" style="width: 18rem;">
-                <div></div>
-                <select #shoes3 class="form-select" aria-label="Default select example" [(ngModel)]="shirtSize_3">
-                    <option value="" disabled selected>Select an size</option>
-                    <option  *ngFor="let size of thirdTypeShirt.sizes" value={{size}}>{{size}}</option>
-                  </select>
-                  <div></div>
-            </div>
-        </div>
-    </ng-template>
-    </div>
-
     <br>
     <br>
     <br>
