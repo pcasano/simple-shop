@@ -16,18 +16,7 @@ export class ShoesPageComponent implements OnInit {
   constructor(
     private router: Router,
     private itemService: ItemService,
-    private dataService: DataService,
     private http: HttpClient) { }
-
-  shoeModelCounter_1: number = 0;
-  shoeModelCounter_2: number = 0;
-  shoeModelCounter_3: number = 0;
-
-
-  firstTypeShoe: any;
-  secondTypeShoe: any;
-  thirdTypeShoe: any;
-
 
   shoesResponse: any;
   shoeSizesAndNumbers: shoeSizeAndNumber[] = [];
@@ -49,51 +38,29 @@ export class ShoesPageComponent implements OnInit {
       },
       (error) => console.error('Error fetching data:', error)
     );
-
-
-    console.log("from ShoePageComponent");
-    this.firstTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "first_type");
-    this.secondTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "second_type");
-    this.thirdTypeShoe = this.dataService.getItemGivenTypeAndModel("shoe", "third_type");
   }
 
 
   increaseCounter(shoeModel: string) {
-    const selectedShoe = this.shoeSizesAndNumbers.find(shoe => shoe.model === shoeModel);
-    if(selectedShoe) {
+    const selectedShoe = this.getShoeGivenModel(shoeModel);
       selectedShoe.number += 1;
-    } else {
-      throw new Error(`Shoe model ${shoeModel} not found`);
-    }
   }
 
   decreaseCounter(shoeModel: string) {
-    const selectedShoe = this.shoeSizesAndNumbers.find(shoe => shoe.model === shoeModel);
-    if(selectedShoe) {
+    const selectedShoe = this.getShoeGivenModel(shoeModel);
       if(selectedShoe.number > 0) {
         selectedShoe.number -= 1;
-      }   
-    } else {
-      throw new Error(`Shoe model ${shoeModel} not found`);
-    }
+      }  
   }
 
   getShoeCounter(shoeModel: string): number {
-    const selectedShoe = this.shoeSizesAndNumbers.find(shoe => shoe.model === shoeModel);
-    if(selectedShoe) {
-        return selectedShoe.number;
-      } else {
-        return 0;
-      }
+    const selectedShoe = this.getShoeGivenModel(shoeModel);
+      return selectedShoe.number;
   }
 
   getShoeSizeGivenModel(shoeModel: string): string {
-    const selectedShoe = this.shoeSizesAndNumbers.find(shoe => shoe.model === shoeModel);
-    if(selectedShoe) {
-        return selectedShoe.size;
-      } else {
-        return "N/A";
-      }
+    const selectedShoe = this.getShoeGivenModel(shoeModel);
+      return selectedShoe.size;
   }
 
   getShoeGivenModel(shoeModel: string): any {
