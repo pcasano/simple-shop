@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../item.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-shirts-page',
@@ -13,124 +15,98 @@ export class ShirtsPageComponent implements OnInit{
   constructor(
     private router: Router,
     private itemService: ItemService,
-    public dataService: DataService) {}
+    private http: HttpClient) { }
 
-  shirtModelCounter_1: number = 0;
-  shirtModelCounter_2: number = 0;
-  shirtModelCounter_3: number = 0;
-
-  shirtSize_1 = "";
-  shirtSize_2 = "";
-  shirtSize_3 = "";
-
-  firstTypeShirt: any;
-  secondTypeShirt: any;
-  thirdTypeShirt: any;
+  shirtsResponse: any;
+  shirtSizesAndNumbers: shirtSizeAndNumber[] = [];
+  shirtsForTheCart: Item[] = [];
 
   ngOnInit(): void {
-    console.log("from ShirtsPageComponent");
-    this.firstTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "first_type");
-    this.secondTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "second_type");
-    this.thirdTypeShirt = this.dataService.getItemGivenTypeAndModel("shirt", "third_type");
-
-    console.log(this.firstTypeShirt.image);
+    this.http.get<any>('../assets/items-data/shirts.json').subscribe(
+      (res) => {
+        this.shirtsResponse = res;
+        console.log(this.shirtsResponse);
+        this.shirtsResponse.models.forEach((shirt: any) => {
+          this.shirtSizesAndNumbers.push({
+            model: shirt.model,
+            size: "",
+            number: 0
+          });
+        })
+      },
+      (error) => console.error('Error fetching data:', error)
+    );
   }
 
-  increaseShirtModel1() {
-    this.shirtModelCounter_1++;
+  increaseCounter(shirtModel: string) {
+    const selectedShirt = this.getShirtGivenModel(shirtModel);
+      selectedShirt.number += 1;
   }
 
-  decreaseShirtModel1() {
-    if(this.shirtModelCounter_1 > 0) {
-      this.shirtModelCounter_1--;
-    }    
+  decreaseCounter(shirtModel: string) {
+    const selectedShoe = this.getShirtGivenModel(shirtModel);
+      if(selectedShoe.number > 0) {
+        selectedShoe.number -= 1;
+      }  
   }
 
-  increaseShirtModel2() {
-    this.shirtModelCounter_2++;
+  getShirtCounter(shirtModel: string): number {
+    const selectedShirt = this.getShirtGivenModel(shirtModel);
+      return selectedShirt.number;
   }
 
-  decreaseShirtModel2() {
-    if(this.shirtModelCounter_2 > 0) {
-      this.shirtModelCounter_2--;
-    }    
+  getShirtSizeGivenModel(shirtModel: string): string {
+    const selectedShirt = this.getShirtGivenModel(shirtModel);
+      return selectedShirt.size;
   }
 
-  increaseShirtModel3() {
-    this.shirtModelCounter_3++;
-  }
-
-  decreaseShirtModel3() {
-    if(this.shirtModelCounter_3 > 0) {
-      this.shirtModelCounter_3--;
-    }    
-  }
-
-  onSelectShirtSize_1(value: string) {
-    this.shirtSize_1 = value;
-  }
-
-  onSelectShirtSize_2(value: string) {
-    this.shirtSize_2 = value;
-  }
-
-  onSelectShirtSize_3(value: string) {
-    this.shirtSize_3 = value;
-  }
-
-  onGoHome() {
-    this.router.navigateByUrl("home");
+  getShirtGivenModel(shirtModel: string): any {
+    const selectedShirt = this.shirtSizesAndNumbers.find(shoe => shoe.model === shirtModel);
+    if(selectedShirt) {
+        return selectedShirt;
+      } else {
+        throw new Error(`Shoe model ${shirtModel} not found`);
+      }
   }
 
   onAddToCart() {
-    let shirt_1 = {
-      type: "shirt",
-      model: "first_type",
-      number: this.shirtModelCounter_1,
-      price: 75,
-      size: this.shirtSize_1,
-      image: "../assets/shirts/shirt_1.jpg"
-    }
-    let shirt_2 = {
-      type: "shirt",
-      model: "second_type",
-      number: this.shirtModelCounter_2,
-      price: 20,
-      size: this.shirtSize_2,
-      image: "../assets/shirts/shirt_2.jpg"
-    }
-    let shirt_3 = {
-      type: "shirt",
-      model: "third_type",
-      number: this.shirtModelCounter_3,
-      price: 65,
-      size: this.shirtSize_3,
-      image: "../assets/shirts/shirt_3.jpg"
-    }
+    this.shirtsResponse.models.forEach((shirt: any) => {     
+      if(this.getShirtCounter(shirt.model) > 0) {
+        this.itemService.shoes.push({
+          type: "shirt",
+          model: shirt.model,
+          number: this.getShirtCounter(shirt.model),
+          image: shirt.image,
+          price: shirt.price,
+          size: this.getShirtSizeGivenModel(shirt.model)
+        });
+      }
+    });
 
-    if(shirt_1.number > 0) {
-      this.itemService.shirts.push(shirt_1);
-    } 
-    if (shirt_2.number > 0) {
-      this.itemService.shirts.push(shirt_2);
-    }
-    if (shirt_3.number > 0) {
-      this.itemService.shirts.push(shirt_3);
-    }
+    this.shirtsResponse.models.forEach((shirt: any) => {
+      this.getShirtGivenModel(shirt.model).number = 0;
+    });
 
-    this.shirtModelCounter_1 = 0;
-    this.shirtModelCounter_2 = 0;
-    this.shirtModelCounter_3 = 0;
-
-    this.itemService.shirts.forEach(shirt => this.itemService.totalCartItems.push(shirt));
+    this.itemService.shoes.forEach(shoe => this.itemService.totalCartItems.push(shoe));
     this.itemService.totalCartItems = this.itemService.consolidateItem(this.itemService.totalCartItems);
-    this.itemService.shirts = [];
+    this.itemService.shoes = [];
   }
 
   onEmptyCart() {
     this.itemService.totalCartItems = [];
-    this.shirtModelCounter_1 = 0;
-    this.shirtModelCounter_2 = 0;
-    this.shirtModelCounter_3 = 0;
+    this.shirtsResponse.models.forEach((shirt: any) => {
+      this.getShirtGivenModel(shirt.model).number = 0;
+    });
     }
+
+    onGoHome() {
+      this.router.navigateByUrl("home");
+    }
+
+}
+
+export interface shirtSizeAndNumber {
+  model: string,
+  size: string,
+  number: number
 }

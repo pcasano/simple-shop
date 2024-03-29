@@ -1,0 +1,34 @@
+{
+    "type": "shirt",
+    "models": [
+        {
+            "model": "first_type",
+            "image": "../assets/shirts/shirt_1.jpg",
+            "price": 25,
+            "sizes": [
+                "S",
+                "M",
+                "L"
+            ]
+        },
+        {
+            "model": "second_type",
+            "image": "../assets/shirts/shirt_2.jpg",
+            "price": 49,
+            "sizes": [
+                "S",
+                "XL"
+            ]
+        },
+        {
+            "model": "third_type",
+            "image": "../assets/shirts/shirt_3.jpg",
+            "price": 39,
+            "sizes": [
+                "M",
+                "L",
+                "XL"
+            ]
+        }
+    ]
+}

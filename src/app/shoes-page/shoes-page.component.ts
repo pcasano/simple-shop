@@ -72,7 +72,6 @@ export class ShoesPageComponent implements OnInit {
       }
   }
 
-
   onGoHome() {
     this.router.navigateByUrl("home");
   }
