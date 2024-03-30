@@ -5,6 +5,7 @@
                 {
                     "model": "first_type",
                     "image": "../assets/shoes/shoe_1.jpg",
+                    "price": 50,
                     "sizes": [
                         "S",
                         "L"
@@ -13,6 +14,7 @@
                 {
                     "model": "second_type",
                     "image": "../assets/shoes/shoe_2.jpg",
+                    "price": 60,
                     "sizes": [
                         "S",
                         "M",
@@ -22,6 +24,7 @@
                 {
                     "model": "third_type",
                     "image": "../assets/shoes/shoe_3.jpg",
+                    "price": 65,
                     "sizes": [
                         "S",
                         "M",
@@ -37,6 +40,7 @@
                 {
                     "model": "first_type",
                     "image": "../assets/shirts/shirt_1.jpg",
+                    "price": 25,
                     "sizes": [
                         "S",
                         "M",
@@ -46,6 +50,7 @@
                 {
                     "model": "second_type",
                     "image": "../assets/shirts/shirt_2.jpg",
+                    "price": 49,
                     "sizes": [
                         "S",
                         "XL"
@@ -54,6 +59,7 @@
                 {
                     "model": "third_type",
                     "image": "../assets/shirts/shirt_3.jpg",
+                    "price": 39,
                     "sizes": [
                         "M",
                         "L",
@@ -68,6 +74,7 @@
                 {
                     "model": "first_type",
                     "image": "../assets/trousers/trousers_1.jpg",
+                    "price": 70,
                     "sizes": [
                         "S",
                         "M",
@@ -77,6 +84,7 @@
                 {
                     "model": "second_type",
                     "image": "../assets/trousers/trousers_2.jpg",
+                    "price": 90,
                     "sizes": [
                         "S",
                         "L",
@@ -86,6 +94,7 @@
                 {
                     "model": "third_type",
                     "image": "../assets/trousers/trousers_3.jpg",
+                    "price": 110,
                     "sizes": [
                         "XS",
                         "L",

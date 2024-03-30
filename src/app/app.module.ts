@@ -16,6 +16,7 @@ import { SupportFormularComponent } from './support-formular/support-formular.co
 import { MessageService } from './message.service';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     CartComponent,
     HomeComponent,
     InventoryComponent,
-    SupportFormularComponent,    
+    SupportFormularComponent,
+    ProductsComponent,    
   ],
   imports: [
     BrowserModule,

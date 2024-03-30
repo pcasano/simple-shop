@@ -7,6 +7,7 @@ export class ItemService {
     shoes: Item[] = [];
     shirts: Item[] = [];
     trousers: Item[] = [];
+    items: Item[] = [];
 
     totalCartItems: Item[] = [];
 
@@ -17,6 +18,7 @@ export class ItemService {
 
     orderId: number = 0;
 
+    itemType: string;
 
     addShoe(shoe: Item) {
         this.shoes.push(shoe);
