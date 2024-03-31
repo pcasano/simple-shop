@@ -4,9 +4,7 @@ import { Item } from "./item";
 
 export class ItemService {
 
-    shoes: Item[] = [];
-    shirts: Item[] = [];
-    trousers: Item[] = [];
+    items: Item[] = [];
 
     totalCartItems: Item[] = [];
 
@@ -17,18 +15,7 @@ export class ItemService {
 
     orderId: number = 0;
 
-
-    addShoe(shoe: Item) {
-        this.shoes.push(shoe);
-    }
-    
-    addShirts(shirt: Item) {
-        this.shirts.push(shirt);
-    }
-
-    addTrousers(trouser: Item) {
-        this.trousers.push(trouser);
-    }
+    itemType: any;
 
     consolidateItem(items: Item[]): Item[] {
         const consolidated: { [key: string]: Item } = {};

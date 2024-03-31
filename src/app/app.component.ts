@@ -21,8 +21,7 @@ export class AppComponent implements OnInit{
   constructor(
     private router: Router,
     public itemService: ItemService,
-    public dataService: DataService,
-    private http: HttpClient) {}  
+    public dataService: DataService) {}  
 
     clickOnCart() {
       this.itemService.cartTotalPrice = this.itemService.totalCartItems.map(order => order.price * order.number).reduce((acc, num) => acc + num, 0);
@@ -38,16 +37,22 @@ export class AppComponent implements OnInit{
     }
 
     onGoToTrousers() {
-      this.router.navigateByUrl("trousers");
+      this.itemService.itemType = "trouser";
+      this.router.navigate(["/products", this.itemService.itemType]);
     }
+    
     onGoToShirts() {
-      this.router.navigateByUrl("shirts");
+      this.itemService.itemType = "shirt";
+      this.router.navigate(["/products", this.itemService.itemType]);
     }
+
+    onGoToShoes() {
+      this.itemService.itemType = "shoe";
+      this.router.navigate(["/products", this.itemService.itemType]);
+    }
+
     onGoToHelp() {
       this.router.navigateByUrl("help");
-      }
-    onGoToShoes() {
-      this.router.navigateByUrl("shoes");
     }
 
 

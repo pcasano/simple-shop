@@ -1,41 +1,33 @@
 <div class="container">
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
-        <div *ngIf="trouserResponse === undefined; else elseBlock" class="col d-flex flex-column align-items-center">
+    <div class="row" style="margin-top: 50px;">
+        <div *ngIf="itemResponse === undefined; else elseBlock" class="col d-flex flex-column align-items-center">
             <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
               </div></div>
               <ng-template #elseBlock>
-                <div class="col d-flex flex-column align-items-center" *ngFor="let trouser of trouserResponse.models">
+                <div class="col d-flex flex-column align-items-center" *ngFor="let item of itemResponse.models">
                     <div class="card" style="width: 18rem;">
-                        <img [src]="trouser.image" class="card-img-top">
+                        <img [src]="item.image" class="card-img-top">
                     </div>
                     <br>
                     <div class="justify-content-evenly d-flex">
-                        <i class="bi bi-dash-circle h3 counter-padding" (click)="decreaseCounter(trouser.model)"></i>
-                        <div class="counter-score-center">{{getTrouserCounter(trouser.model)}}</div>
-                        <i class="bi bi-plus-circle h3 counter-padding" (click)="increaseCounter(trouser.model)"></i>
+                        <i class="bi bi-dash-circle h3 counter-padding" (click)="decreaseCounter(item.model)"></i>
+                        <div class="counter-score-center">{{getItemCounter(item.model)}}</div>
+                        <i class="bi bi-plus-circle h3 counter-padding" (click)="increaseCounter(item.model)"></i>
                     </div>
                     <br>
                     <div class="justify-content-evenly d-flex" style="width: 18rem;">
                         <div></div>
-                        <select class="form-select" aria-label="Default select example" (ngModelChange)="getTrouserSizeGivenModel(trouser.model)">
+                        <select class="form-select" aria-label="Default select example" (ngModelChange)="getItemSizeGivenModel(item.model)">
                             <option value="" disabled selected>Select an size</option>
-                            <option  *ngFor="let size of trouser.sizes" value={{size}}>{{size}}</option>
+                            <option  *ngFor="let size of item.sizes" value={{size}}>{{size}}</option>
                           </select>
                           <div></div>
                     </div>
                 </div>
             </ng-template>
         </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
+    <div class="row" style="margin-top: 50px;">
         <div class="col d-flex justify-content-start buttons-margins">
             <button type="button" class="btn btn-primary" (click)="onGoHome()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go Home</button>
             <p>&nbsp;&nbsp;</p>
