@@ -21,31 +21,30 @@ export class ProductsComponent {
   itemSizeAndNumber: ItemSizeAndNumber[] = [];
   itemsForTheCart: Item[] = [];
 
-  itemType_: any;
+  itemType: any;
 
   ngOnInit(): void {
 
-
     this.route.paramMap.subscribe(params => {
-      this.itemType_ = params.get('type');
 
+      this.itemType = params.get('type');
+
+      this.http.get<any>('../assets/items.json').subscribe(
+        (res) => {
+          this.itemResponse = res.find((product: any) => product.type === this.itemService.itemType);
+          this.itemResponse.models.forEach((item: any) => {
+            this.itemSizeAndNumber.push({
+              type: this.itemType,
+              model: item.model,
+              size: "",
+              number: 0
+            });
+          })
+          console.log(this.itemResponse);
+        },
+        (error) => console.error('Error fetching data:', error)
+      );
     });
-
-    this.http.get<any>('../assets/items.json').subscribe(
-      (res) => {
-        this.itemResponse = res.find((product: any) => product.type === this.itemService.itemType);
-        this.itemResponse.models.forEach((item: any) => {
-          this.itemSizeAndNumber.push({
-            type: this.itemType_,
-            model: item.model,
-            size: "",
-            number: 0
-          });
-        })
-        console.log(this.itemResponse);
-      },
-      (error) => console.error('Error fetching data:', error)
-    );
   }
 
   getItemGivenModel(itemModel: string): any {
@@ -83,7 +82,7 @@ export class ProductsComponent {
     this.itemResponse.models.forEach((item: any) => {     
       if(this.getItemCounter(item.model) > 0) {
         this.itemService.items.push({
-          type: this.itemType_,
+          type: this.itemType,
           model: item.model,
           number: this.getItemCounter(item.model),
           image: item.image,

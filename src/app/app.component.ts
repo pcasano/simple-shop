@@ -37,8 +37,8 @@ export class AppComponent implements OnInit{
     }
 
     onGoToTrousers() {
-      this.itemService.itemType = this.itemService.itemType;
-      this.router.navigate(["/products", "trouser"]);
+      this.itemService.itemType = "trouser";
+      this.router.navigate(["/products", this.itemService.itemType]);
     }
     
     onGoToShirts() {
