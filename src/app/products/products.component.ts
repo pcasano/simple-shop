@@ -31,7 +31,7 @@ export class ProductsComponent {
 
       this.http.get<any>('../assets/items.json').subscribe(
         (res) => {
-          this.itemResponse = res.find((product: any) => product.type === this.itemService.itemType);
+          this.itemResponse = res.find((product: any) => product.type === this.itemType);
           this.itemResponse.models.forEach((item: any) => {
             this.itemSizeAndNumber.push({
               type: this.itemType,
@@ -40,7 +40,6 @@ export class ProductsComponent {
               number: 0
             });
           })
-          console.log(this.itemResponse);
         },
         (error) => console.error('Error fetching data:', error)
       );
