@@ -1,9 +1,5 @@
 <div class="container">
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
+    <div class="row" style="margin-top: 50px;">
         <div *ngIf="itemResponse === undefined; else elseBlock" class="col d-flex flex-column align-items-center">
             <div class="spinner-border" role="status">
                 <span class="visually-hidden">Loading...</span>
@@ -31,11 +27,7 @@
                 </div>
             </ng-template>
         </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="row">
+    <div class="row" style="margin-top: 50px;">
         <div class="col d-flex justify-content-start buttons-margins">
             <button type="button" class="btn btn-primary" (click)="onGoHome()"><i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Go Home</button>
             <p>&nbsp;&nbsp;</p>
