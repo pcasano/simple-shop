@@ -37,23 +37,22 @@ export class AppComponent implements OnInit{
     }
 
     onGoToTrousers() {
-      this.itemService.itemType = "trouser";
-      this.router.navigateByUrl("products");
-
+      this.itemService.itemType = this.itemService.itemType;
+      this.router.navigate(["/products", "trouser"]);
     }
     
     onGoToShirts() {
       this.itemService.itemType = "shirt";
-      this.router.navigateByUrl("products");
-    }
-
-    onGoToHelp() {
-      this.router.navigateByUrl("help");
+      this.router.navigate(["/products", this.itemService.itemType]);
     }
 
     onGoToShoes() {
       this.itemService.itemType = "shoe";
-      this.router.navigateByUrl("products");
+      this.router.navigate(["/products", this.itemService.itemType]);
+    }
+
+    onGoToHelp() {
+      this.router.navigateByUrl("help");
     }
 
 

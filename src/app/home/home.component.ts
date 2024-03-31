@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-home',
@@ -9,18 +10,22 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
   constructor(
-    private router: Router) {}
+    private router: Router,
+    private itemService: ItemService) {}
 
-  clickOnShoes() {
-    this.router.navigateByUrl("shoes");
-  }
+    onGoToTrousers() {
+      this.itemService.itemType = "trouser";
+      this.router.navigate(["/products", this.itemService.itemType]);
+    }
+    
+    onGoToShirts() {
+      this.itemService.itemType = "shirt";
+      this.router.navigate(["/products", this.itemService.itemType]);
+    }
 
-  clickOnTrousers() {
-    this.router.navigateByUrl("trousers");
-  }
-
-  clickOnShirts() {
-    this.router.navigateByUrl("shirts");
-  }
+    onGoToShoes() {
+      this.itemService.itemType = "shoe";
+      this.router.navigate(["/products", this.itemService.itemType]);
+    }
 
 }

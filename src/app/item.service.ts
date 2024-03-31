@@ -18,7 +18,7 @@ export class ItemService {
 
     orderId: number = 0;
 
-    itemType: string;
+    itemType: any;
 
     addShoe(shoe: Item) {
         this.shoes.push(shoe);
