@@ -72,9 +72,8 @@ export class ProductsComponent {
       return selectedItem.number;
   }
 
-  getItemSizeGivenModel(itemModel: string): string {
-    const selectedItem = this.getItemGivenModel(itemModel);
-      return selectedItem.size;
+  getItemSizeGivenModel(itemModel: string, value: any) {
+    this.getItemGivenModel(itemModel).size = (value.target as HTMLSelectElement).value;
   }
 
   onAddToCart() {
@@ -86,7 +85,7 @@ export class ProductsComponent {
           number: this.getItemCounter(item.model),
           image: item.image,
           price: item.price,
-          size: this.getItemSizeGivenModel(item.model)
+          size: this.getItemGivenModel(item.model).size
         });
       }
     });

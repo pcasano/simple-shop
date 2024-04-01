@@ -18,7 +18,7 @@
                     <br>
                     <div class="justify-content-evenly d-flex" style="width: 18rem;">
                         <div></div>
-                        <select class="form-select" aria-label="Default select example" (ngModelChange)="getItemSizeGivenModel(item.model)">
+                        <select class="form-select" aria-label="Default select example" (change)="getItemSizeGivenModel(item.model, $event)">
                             <option value="" disabled selected>Select an size</option>
                             <option  *ngFor="let size of item.sizes" value={{size}}>{{size}}</option>
                           </select>
