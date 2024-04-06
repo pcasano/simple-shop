@@ -8,9 +8,9 @@
     </div>
     <div class="icons-block">
       <div class="categories">
-        <div class="categories-margin hover-element before-hover-element" (click)="onGoToShoes()">Shoes</div>
-        <div class="categories-margin hover-element before-hover-element" (click)="onGoToShirts()">Shirts</div>
-        <div class="categories-margin hover-element before-hover-element" (click)="onGoToTrousers()">Trousers</div>
+        <div class="categories-margin hover-element before-hover-element" 
+        *ngFor="let category of categories" (click)="navigateToProductGivenType(category.type)">{{category.categoryName}}
+      </div>
       </div>
       <div><i class="bi bi-list h3" (click)="clickOnInventory()"></i></div>    
       <div *ngIf="itemService.totalCartItems.length>0; else elseBlock">

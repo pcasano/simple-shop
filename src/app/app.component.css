@@ -28,10 +28,14 @@ h1 {
 .categories {
     display: flex;
     justify-content: flex-end;
+    margin-right: 10px;
 }
 
 .categories-margin {
-    margin: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
 .hover-element:hover {

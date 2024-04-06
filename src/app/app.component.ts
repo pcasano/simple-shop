@@ -12,7 +12,6 @@ import { TypeWithModels } from './TypeWithModels';
 })
 export class AppComponent implements OnInit{
 
-
   title = 'simple-shop';
   jsonData: any;
 
@@ -21,7 +20,10 @@ export class AppComponent implements OnInit{
   constructor(
     private router: Router,
     public itemService: ItemService,
-    public dataService: DataService) {}  
+    public dataService: DataService,
+    private http: HttpClient) {}  
+
+    categories: Category[] = [];
 
     clickOnCart() {
       this.itemService.cartTotalPrice = this.itemService.totalCartItems.map(order => order.price * order.number).reduce((acc, num) => acc + num, 0);
@@ -36,35 +38,33 @@ export class AppComponent implements OnInit{
       this.router.navigateByUrl("home");
     }
 
-    onGoToTrousers() {
-      this.itemService.itemType = "trouser";
-      this.router.navigate(["/products", this.itemService.itemType]);
-    }
-    
-    onGoToShirts() {
-      this.itemService.itemType = "shirt";
-      this.router.navigate(["/products", this.itemService.itemType]);
-    }
-
-    onGoToShoes() {
-      this.itemService.itemType = "shoe";
-      this.router.navigate(["/products", this.itemService.itemType]);
-    }
-
     onGoToHelp() {
       this.router.navigateByUrl("help");
     }
 
-
     ngOnInit(): void {
-      console.log("from AppComponent");
-      this.dataService.fetchData().subscribe(
-        (res) => {
-        this.dataService.responseData = res;
-      },
-      (error) => console.error('Error fetching data:', error)
-        );
+        this.http.get<any>(`../assets/serverData/home.json`).subscribe(
+          {
+            next: (res) => {
+              res.forEach((category: any) => this.categories.push({
+                type: category.type,
+                categoryName: category.categoryName,
+                image: category.image
+              }));
+            console.log(this.categories);
+            },
+            error: (error) => console.error('Error fetching data:', error)
+          }
+        )
+      }
 
+    navigateToProductGivenType(type: string) {
+      this.router.navigate(["/products", type]);
     }
+}
 
+interface Category {
+  type: string,
+  categoryName: string,
+  image: string
 }

@@ -1,22 +1,9 @@
 <div class="container">
     <div class="row" style="margin-top: 50px;">
-        <div class="col d-flex flex-column align-items-center">
+        <div class="col d-flex flex-column align-items-center" *ngFor="let category of categories">
             <div class="card" style="width: 18rem;">
-                <img src="../assets/main/main_shoes.jpg" class="card-img-top"  (click)="onGoToShoes()">
+                <img [src]="category.image" class="card-img-top"  (click)="navigateToProductGivenType(category.type)">
             </div>
-            <h1 (click)="onGoToShoes()">Shoes</h1>
-        </div>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img src="../assets/main/main_shirt.jpg" class="card-img-top" (click)="onGoToShirts()">
-            </div>
-            <h1 (click)="onGoToShirts()">Shirts</h1>
-        </div>
-        <div class="col d-flex flex-column align-items-center">
-            <div class="card" style="width: 18rem;">
-                <img src="../assets/main/main_trousers.jpg" class="card-img-top" (click)="onGoToTrousers()">
-            </div>
-            <h1 (click)="onGoToTrousers()">Trousers</h1>
-        </div>
+            <h1 (click)="navigateToProductGivenType(category.type)">{{category.categoryName}}</h1>
     </div>
 </div>

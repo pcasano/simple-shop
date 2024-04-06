@@ -1,0 +1,17 @@
+[
+    {
+        "type": "shoe",
+        "categoryName": "Shoes",
+        "image": "../assets/main/main_shoes.jpg"
+    },
+    {
+        "type": "shirt",
+        "categoryName": "Shirts",
+        "image": "../assets/main/main_shirt.jpg"
+    },
+    {
+        "type": "trouser",
+        "categoryName": "Trousers",
+        "image": "../assets/main/main_trousers.jpg"
+    }
+]
