@@ -25,15 +25,19 @@ export class SupportFormularComponent {
     showAlert: boolean = false;
 
 onFormSubmit(): void {
-  const obj = this.userForm.value;
+  const obj = this.userForm.getRawValue();
 
-  this.messageService.message = {
-    firstName: obj.firstName,
-    lastName: obj.lastName,
-    email: obj.email,
-    telephone: obj.telephone,
-    text: obj.text,
-  }
+
+
+  this.messageService.message = obj;
+
+  // = {
+  //   firstName: obj.firstName,
+  //   lastName: obj.lastName,
+  //   email: obj.email,
+  //   telephone: obj.telephone,
+  //   text: obj.text,
+  // }
 
   this.userForm.reset();
   this.showAlert = true;
@@ -54,6 +58,8 @@ private waitAndCloseAlert() {
       console.log("Waited for 3 seconds!");
   }, 3000);
 }
+
+// clarify clear timeout
 
 
 }

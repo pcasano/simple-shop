@@ -24,35 +24,35 @@ export class ProductsComponent {
   itemType: any;
 
   ngOnInit(): void {
-
     this.route.paramMap.subscribe(params => {
 
       this.itemType = params.get('type');
-
-      this.http.get<any>('../assets/items.json').subscribe(
-        (res) => {
-          this.itemResponse = res.find((product: any) => product.type === this.itemType);
-          this.itemResponse.models.forEach((item: any) => {
-            this.itemSizeAndNumber.push({
-              type: this.itemType,
-              model: item.model,
-              size: "",
-              number: 0
-            });
-          })
-        },
-        (error) => console.error('Error fetching data:', error)
+      this.http.get<any>(`../assets/serverData/${this.itemType}.json`).subscribe(
+        {
+          next: (res) => {
+            this.itemResponse = res;
+            this.itemResponse.models.forEach((item: any) => {
+              this.itemSizeAndNumber.push({
+                type: this.itemType,
+                model: item.model,
+                size: "",
+                number: 0
+              });
+            })
+          },
+          error: (error) => console.error('Error fetching data:', error)
+        }
       );
     });
   }
 
   getItemGivenModel(itemModel: string): any {
     const selectedItem = this.itemSizeAndNumber.find(item => item.model === itemModel);
-    if(selectedItem) {
-        return selectedItem;
-      } else {
-        throw new Error(`Item model ${itemModel} not found`);
-      }
+    if (selectedItem) {
+      return selectedItem;
+    } else {
+      throw new Error(`Item model ${itemModel} not found`);
+    }
   }
 
   increaseCounter(itemModel: string) {
@@ -62,23 +62,23 @@ export class ProductsComponent {
 
   decreaseCounter(itemModel: string) {
     const selectedItem = this.getItemGivenModel(itemModel);
-      if(selectedItem.number > 0) {
-        selectedItem.number -= 1;
-      }  
+    if (selectedItem.number > 0) {
+      selectedItem.number -= 1;
+    }
   }
 
   getItemCounter(itemModel: string): number {
     const selectedItem = this.getItemGivenModel(itemModel);
-      return selectedItem.number;
+    return selectedItem.number;
   }
 
-  getItemSizeGivenModel(itemModel: string, value: any) {
+  getItemSizeGivenModel(value: any, itemModel: string)  {
     this.getItemGivenModel(itemModel).size = (value.target as HTMLSelectElement).value;
   }
 
   onAddToCart() {
-    this.itemResponse.models.forEach((item: any) => {     
-      if(this.getItemCounter(item.model) > 0) {
+    this.itemResponse.models.forEach((item: any) => {
+      if (this.getItemCounter(item.model) > 0) {
         this.itemService.items.push({
           type: this.itemType,
           model: item.model,
@@ -104,13 +104,11 @@ export class ProductsComponent {
     this.itemResponse.models.forEach((item: any) => {
       this.getItemGivenModel(item.model).number = 0;
     });
-    }
+  }
 
-    onGoHome() {
-      this.router.navigateByUrl("home");
-    }
-
-
+  onGoHome() {
+    this.router.navigateByUrl("home");
+  }
 }
 
 export interface ItemSizeAndNumber {

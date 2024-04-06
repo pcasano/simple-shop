@@ -9,6 +9,8 @@ import { ItemService } from '../item.service';
 })
 export class HomeComponent {
 
+  // add json for categories too
+
   constructor(
     private router: Router,
     private itemService: ItemService) {}
